@@ -4,7 +4,7 @@ This repository contains the implementation of the paper: [Revealing the Myth of
 
 ## Architecture
 
-The basic end-to-end coreference model is a PyTorch re-implementation based on the TensorFlow model, and it follows the same preprocessing (see this [repository](https://github.com/mandarjoshi90/coref)).
+The basic end-to-end coreference model is a PyTorch re-implementation based on the TensorFlow model following similar preprocessing (see this [repository](https://github.com/mandarjoshi90/coref)).
 
 There are four higher-order inference (HOI) methods experimented: **Attended Antecedent**, **Entity Equalization**, **Span Clustering**, and **Cluster Merging**. All are included here except for Entity Equalization which is experimented in the equivalent TensorFlow environment (see this separate [repository](https://github.com/lxucs/coref-ee)).
 
@@ -21,7 +21,7 @@ There are four higher-order inference (HOI) methods experimented: **Attended Ant
 ## Basic Setup
 Set up environment and data for training and evaluation:
 * Install Python3 dependencies: `pip install -r requirements.txt`
-* Create a directory for data that will contain all data files, models and log files; set the `data_dir = /path/to/data/dir` in [experiments.conf](experiments.conf)
+* Create a directory for data that will contain all data files, models and log files; set `data_dir = /path/to/data/dir` in [experiments.conf](experiments.conf)
 * Prepare dataset (requiring [OntoNotes 5.0](https://catalog.ldc.upenn.edu/LDC2013T19) corpus): `./setup_data.sh /path/to/ontonotes /path/to/data/dir`
 
 For SpanBERT, download the pretrained weights from this [repository](https://github.com/facebookresearch/SpanBERT), and rename it `/path/to/data/dir/spanbert_base` or `/path/to/data/dir/spanbert_large` accordingly.
@@ -39,12 +39,12 @@ The name of each directory corresponds with a **configuration** in [experiments.
 Evaluate a model on the dev/test set:
 * Download the corresponding model directory and put it under `data_dir`
 * `python evaluate.py [config] [model_id] [gpu_id]`
-    * e.g. for Attended Antecedent:`python evaluate.py train_spanbert_large_ml0_d2 May08_12-38-29_58000 0`
+    * e.g. Attended Antecedent:`python evaluate.py train_spanbert_large_ml0_d2 May08_12-38-29_58000 0`
 
 ## Training
 `python run.py [config] [gpu_id]`
 
-* [config] can be any **configuration** in [experiments.conf](experiments.conf).
+* [config] can be any **configuration** in [experiments.conf](experiments.conf)
 * Log file will be saved at `your_data_dir/[config]/log_XXX.txt`
 * Models will be saved at `your_data_dir/[config]/model_XXX.bin`
 * Tensorboard is available at `your_data_dir/tensorboard`
