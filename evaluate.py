@@ -1,4 +1,5 @@
 from run import Runner
+import sys
 
 
 def evaluate(config_name, gpu_id, saved_suffix):
@@ -14,7 +15,5 @@ def evaluate(config_name, gpu_id, saved_suffix):
 
 
 if __name__ == '__main__':
-    config_name = 'train_spanbert_large_ml0_cm_fn1000_max_dloss'
-    saved_suffix = 'XXX'
-    gpu_id = 7
+    config_name, saved_suffix, gpu_id = sys.argv[1], sys.argv[2], int(sys.argv[3])
     evaluate(config_name, gpu_id, saved_suffix)
