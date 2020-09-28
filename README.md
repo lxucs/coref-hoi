@@ -1,6 +1,6 @@
 # End-to-End Coreference Resolution with Different Higher-Order Inference Methods
 
-This repository contains the implementation of the paper: Revealing the Myth of Higher-Order Inference in Coreference Resolution.
+This repository contains the implementation of the paper: [Revealing the Myth of Higher-Order Inference in Coreference Resolution](https://arxiv.org/abs/2009.12013).
 
 ## Architecture
 
@@ -18,10 +18,15 @@ There are four higher-order inference (HOI) methods experimented: **Attended Ant
 * [conll.py](conll.py), [metrics.py](metrics.py): same CoNLL-related files from the [repository](https://github.com/mandarjoshi90/coref)
 * [experiments.conf](experiments.conf): different model configurations
 
-## Setup for Running
-TBD soon.
+## Basic Setup
 
-## Setup for Training
+
+## Evaluation
+Trained models are provided [here](https://drive.google.com/drive/folders/1MqW38YGYJtLHW8i20LPRBPt47CoOLuyW?usp=sharing). Each configuration has its own directory with two trained models included inside.
+
+1. 
+
+## Training
 TBD soon.
 
 
