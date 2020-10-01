@@ -1,3 +1,5 @@
+This repository is currently in sync with this [repo](https://github.com/emorynlp/coref-hoi) @ EmoryNLP.
+
 # End-to-End Coreference Resolution with Different Higher-Order Inference Methods
 
 This repository contains the implementation of the paper: [Revealing the Myth of Higher-Order Inference in Coreference Resolution](https://arxiv.org/abs/2009.12013).
