@@ -38,8 +38,10 @@ Provided trained models:
 
 The name of each directory corresponds with a **configuration** in [experiments.conf](experiments.conf). Each directory has two trained models inside.
 
+If you want to use the official evaluator, download and unzip [conll 2012 scorer](https://cs.emory.edu/~lxu85/conll-2012.zip) under this directory.
+
 Evaluate a model on the dev/test set:
-* Download the corresponding model directory and put it under `data_dir`
+* Download the corresponding model directory and unzip it under `data_dir`
 * `python evaluate.py [config] [model_id] [gpu_id]`
     * e.g. Attended Antecedent:`python evaluate.py train_spanbert_large_ml0_d2 May08_12-38-29_58000 0`
 

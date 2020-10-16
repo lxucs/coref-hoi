@@ -82,6 +82,7 @@ class Tensorizer:
         self.config = config
         self.tokenizer = BertTokenizer.from_pretrained(config['bert_tokenizer_name'])
 
+        # Will be used in evaluation
         self.stored_info = {}
         self.stored_info['tokens'] = {}  # {doc_key: ...}
         self.stored_info['subtoken_maps'] = {}  # {doc_key: ...}; mapping back to tokens

@@ -13,6 +13,33 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
+def skip_doc(doc_key):
+    return False
+
+
+def normalize_word(word, language):
+    if language == "arabic":
+        word = word[:word.find("#")]
+    if word == "/." or word == "/?":
+        return word[1:]
+    else:
+        return word
+
+
+def get_sentence_map(segments, sentence_end):
+    assert len(sentence_end) == sum([len(seg) - 2 for seg in segments])  # of subtokens in all segments
+    sent_map = []
+    sent_idx, subtok_idx = 0, 0
+    for segment in segments:
+        sent_map.append(sent_idx)  # [CLS]
+        for i in range(len(segment) - 2):
+            sent_map.append(sent_idx)
+            sent_idx += int(sentence_end[subtok_idx])
+            subtok_idx += 1
+        sent_map.append(sent_idx)  # [SEP]
+    return sent_map
+
+
 class DocumentState(object):
     def __init__(self, key):
         self.doc_key = key
@@ -40,6 +67,7 @@ class DocumentState(object):
         self.coref_stacks = collections.defaultdict(list)
 
     def finalize(self):
+        """ Extract clusters; fill other info e.g. speakers, pronouns """
         # Populate speakers from info
         subtoken_idx = 0
         for seg_info in self.segment_info:
@@ -121,21 +149,11 @@ class DocumentState(object):
         }
 
 
-def skip_doc(doc_key):
-    return False
-
-
-def normalize_word(word, language):
-    if language == "arabic":
-        word = word[:word.find("#")]
-    if word == "/." or word == "/?":
-        return word[1:]
-    else:
-        return word
-
-
-def split_into_segments(document_state: DocumentState, max_seg_len, constraints1, constraints2):
-    """ Add CLS, SEP here """
+def split_into_segments(document_state: DocumentState, max_seg_len, constraints1, constraints2, tokenizer):
+    """ Split into segments.
+        Add subtokens, subtoken_map, info for each segment; add CLS, SEP in the segment subtokens
+        Input document_state: tokens, subtokens, token_end, sentence_end, utterance_end, subtoken_map, info
+    """
     curr_idx = 0  # Index for subtokens
     prev_token_idx = 0
     while curr_idx < len(document_state.subtokens):
@@ -152,7 +170,7 @@ def split_into_segments(document_state: DocumentState, max_seg_len, constraints1
             if end_idx < curr_idx:
                 logger.error('Cannot split valid segment: no sentence end or token end')
 
-        segment = ['[CLS]'] + document_state.subtokens[curr_idx: end_idx + 1] + ['[SEP]']
+        segment = [tokenizer.cls_token] + document_state.subtokens[curr_idx: end_idx + 1] + [tokenizer.sep_token]
         document_state.segments.append(segment)
 
         subtoken_map = document_state.subtoken_map[curr_idx: end_idx + 1]
@@ -164,29 +182,38 @@ def split_into_segments(document_state: DocumentState, max_seg_len, constraints1
         prev_token_idx = subtoken_map[-1]
 
 
-def get_sentence_map(segments, sentence_end):
-    assert len(sentence_end) == sum([len(seg) - 2 for seg in segments])  # of subtokens in all segments
-    sent_map = []
-    sent_idx, subtok_idx = 0, 0
-    for segment in segments:
-        sent_map.append(sent_idx)  # [CLS]
-        for i in range(len(segment) - 2):
-            sent_map.append(sent_idx)
-            sent_idx += int(sentence_end[subtok_idx])
-            subtok_idx += 1
-        sent_map.append(sent_idx)  # [SEP]
-    return sent_map
+def get_document(doc_key, doc_lines, language, seg_len, tokenizer):
+    """ Process raw input to finalized documents """
+    document_state = DocumentState(doc_key)
+    word_idx = -1
+
+    # Build up documents
+    for line in doc_lines:
+        row = line.split()  # Columns for each token
+        if len(row) == 0:
+            document_state.sentence_end[-1] = True
+        else:
+            assert len(row) >= 12
+            word_idx += 1
+            word = normalize_word(row[3], language)
+            subtokens = tokenizer.tokenize(word)
+            document_state.tokens.append(word)
+            document_state.token_end += [False] * (len(subtokens) - 1) + [True]
+            for idx, subtoken in enumerate(subtokens):
+                document_state.subtokens.append(subtoken)
+                info = None if idx != 0 else (row + [len(subtokens)])
+                document_state.info.append(info)
+                document_state.sentence_end.append(False)
+                document_state.subtoken_map.append(word_idx)
+
+    # Split documents
+    constraits1 = document_state.sentence_end if language != 'arabic' else document_state.token_end
+    split_into_segments(document_state, seg_len, constraits1, document_state.token_end, tokenizer)
+    document = document_state.finalize()
+    return document
 
 
-def minimize_language(args, labels, stats):
-    tokenizer = BertTokenizer.from_pretrained(args.tokenizer_name)
-
-    minimize_partition('dev', 'v4_gold_conll', args, labels, stats, tokenizer)
-    minimize_partition('test', 'v4_gold_conll', args, labels, stats, tokenizer)
-    minimize_partition('train', 'v4_gold_conll', args, labels, stats, tokenizer)
-
-
-def minimize_partition(partition, extension, args, labels, stats, tokenizer):
+def minimize_partition(partition, extension, args, tokenizer):
     input_path = os.path.join(args.input_dir, f'{partition}.{args.language}.{extension}')
     output_path = os.path.join(args.output_dir, f'{partition}.{args.language}.{args.seg_len}.jsonlines')
     doc_count = 0
@@ -217,36 +244,12 @@ def minimize_partition(partition, extension, args, labels, stats, tokenizer):
     logger.info(f'Processed {doc_count} documents to {output_path}')
 
 
-def get_document(doc_key, doc_lines, language, seg_len, tokenizer):
-    """ Get document with subtokens (without adding CLS, SEP) """
-    document_state = DocumentState(doc_key)
-    word_idx = -1
+def minimize_language(args):
+    tokenizer = BertTokenizer.from_pretrained(args.tokenizer_name)
 
-    # Build up documents
-    for line in doc_lines:
-        row = line.split()  # Columns for each token
-        if len(row) == 0:
-            document_state.sentence_end[-1] = True
-        else:
-            assert len(row) >= 12
-            word_idx += 1
-            word = normalize_word(row[3], language)
-            subtokens = tokenizer.tokenize(word)
-            document_state.tokens.append(word)
-            document_state.token_end += [False] * (len(subtokens) - 1) + [True]
-            for idx, subtoken in enumerate(subtokens):
-                document_state.subtokens.append(subtoken)
-                info = None if idx != 0 else (row + [len(subtokens)])
-                document_state.info.append(info)
-                document_state.sentence_end.append(False)
-                document_state.subtoken_map.append(word_idx)
-
-    # Split documents
-    constraits1 = document_state.sentence_end if language != 'arabic' else document_state.token_end
-    split_into_segments(document_state, seg_len, constraits1, document_state.token_end)
-    stats[f'max_seg_len_{language}'] = max(stats[f'max_seg_len_{language}'], max([len(s) for s in document_state.segments]))
-    document = document_state.finalize()
-    return document
+    minimize_partition('dev', 'v4_gold_conll', args, tokenizer)
+    minimize_partition('test', 'v4_gold_conll', args, tokenizer)
+    minimize_partition('train', 'v4_gold_conll', args, tokenizer)
 
 
 if __name__ == '__main__':
@@ -268,10 +271,4 @@ if __name__ == '__main__':
     logger.info(args)
     os.makedirs(args.output_dir, exist_ok=True)
 
-    labels = collections.defaultdict(set)
-    stats = collections.defaultdict(int)
-
-    minimize_language(args, labels, stats)
-
-    for k, v in stats.items():
-        print("{} = {}".format(k, v))
+    minimize_language(args)
