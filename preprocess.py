@@ -45,7 +45,7 @@ class DocumentState(object):
         self.doc_key = key
         self.tokens = []
 
-        # Linear list mapped to all subtokens
+        # Linear list mapped to subtokens without CLS, SEP
         self.subtokens = []
         self.subtoken_map = []
         self.token_end = []
@@ -85,25 +85,26 @@ class DocumentState(object):
             self.speakers += [speakers]
 
         # Populate cluster
-        first_subtoken_idx = -1  # Index of the first subtoken of each word
-        for seg_idx, seg_info in enumerate(self.segment_info):
-            for i, subtoken_info in enumerate(seg_info):
-                first_subtoken_idx += 1
-                coref = subtoken_info[-2] if subtoken_info is not None else '-'
-                if coref != '-':
-                    last_subtoken_idx = first_subtoken_idx + subtoken_info[-1] - 1
-                    for part in coref.split('|'):
-                        if part[0] == '(':
-                            if part[-1] == ')':
-                                cluster_id = int(part[1:-1])
-                                self.clusters[cluster_id].append((first_subtoken_idx, last_subtoken_idx))
-                            else:
-                                cluster_id = int(part[1:])
-                                self.coref_stacks[cluster_id].append(first_subtoken_idx)
+        first_subtoken_idx = 0  # Subtoken idx across segments
+        subtokens_info = util.flatten(self.segment_info)
+        while first_subtoken_idx < len(subtokens_info):
+            subtoken_info = subtokens_info[first_subtoken_idx]
+            coref = subtoken_info[-2] if subtoken_info is not None else '-'
+            if coref != '-':
+                last_subtoken_idx = first_subtoken_idx + subtoken_info[-1] - 1
+                for part in coref.split('|'):
+                    if part[0] == '(':
+                        if part[-1] == ')':
+                            cluster_id = int(part[1:-1])
+                            self.clusters[cluster_id].append((first_subtoken_idx, last_subtoken_idx))
                         else:
-                            cluster_id = int(part[:-1])
-                            start = self.coref_stacks[cluster_id].pop()
-                            self.clusters[cluster_id].append((start, last_subtoken_idx))
+                            cluster_id = int(part[1:])
+                            self.coref_stacks[cluster_id].append(first_subtoken_idx)
+                    else:
+                        cluster_id = int(part[:-1])
+                        start = self.coref_stacks[cluster_id].pop()
+                        self.clusters[cluster_id].append((start, last_subtoken_idx))
+            first_subtoken_idx += 1
 
         # Merge clusters if any clusters have common mentions
         merged_clusters = []

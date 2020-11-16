@@ -25,6 +25,8 @@ class CorefModel(nn.Module):
         self.max_seg_len = config['max_segment_len']
         self.max_span_width = config['max_span_width']
         assert config['loss_type'] in ['marginalized', 'hinge']
+        if config['coref_depth'] > 1 or config['higher_order'] == 'cluster_merging':
+            assert config['fine_grained']  # Higher-order is in slow fine-grained scoring
 
         # Model
         self.dropout = nn.Dropout(p=config['dropout_rate'])
@@ -49,7 +51,7 @@ class CorefModel(nn.Module):
         self.emb_same_speaker = self.make_embedding(2) if config['use_metadata'] else None
         self.emb_segment_distance = self.make_embedding(config['max_training_sentences']) if config['use_segment_distance'] else None
         self.emb_top_antecedent_distance = self.make_embedding(10)
-        self.emb_cluster_size = self.make_embedding(10) if config['fine_grained'] and config['higher_order'] == 'cluster_merging' else None
+        self.emb_cluster_size = self.make_embedding(10) if config['higher_order'] == 'cluster_merging' else None
 
         self.mention_token_attn = self.make_ffnn(self.bert_emb_size, 0, output_size=1) if config['model_heads'] else None
         self.span_emb_score_ffnn = self.make_ffnn(self.span_emb_size, [config['ffnn_size']] * config['ffnn_depth'], output_size=1)
@@ -58,9 +60,9 @@ class CorefModel(nn.Module):
         self.antecedent_distance_score_ffnn = self.make_ffnn(config['feature_emb_size'], 0, output_size=1) if config['use_distance_prior'] else None
         self.coref_score_ffnn = self.make_ffnn(self.pair_emb_size, [config['ffnn_size']] * config['ffnn_depth'], output_size=1) if config['fine_grained'] else None
 
-        self.gate_ffnn = self.make_ffnn(2 * self.span_emb_size, 0, output_size=self.span_emb_size) if config['fine_grained'] and config['coref_depth'] > 1 else None
-        self.span_attn_ffnn = self.make_ffnn(self.span_emb_size, 0, output_size=1) if config['fine_grained'] and config['higher_order'] == 'span_clustering' else None
-        self.cluster_score_ffnn = self.make_ffnn(3 * self.span_emb_size + config['feature_emb_size'], [config['cluster_ffnn_size']] * config['ffnn_depth'], output_size=1) if config['fine_grained'] and config['higher_order'] == 'cluster_merging' else None
+        self.gate_ffnn = self.make_ffnn(2 * self.span_emb_size, 0, output_size=self.span_emb_size) if config['coref_depth'] > 1 else None
+        self.span_attn_ffnn = self.make_ffnn(self.span_emb_size, 0, output_size=1) if config['higher_order'] == 'span_clustering' else None
+        self.cluster_score_ffnn = self.make_ffnn(3 * self.span_emb_size + config['feature_emb_size'], [config['cluster_ffnn_size']] * config['ffnn_depth'], output_size=1) if config['higher_order'] == 'cluster_merging' else None
 
         self.update_steps = 0  # Internal use for debug
         self.debug = True
@@ -299,7 +301,9 @@ class CorefModel(nn.Module):
         # Add mention loss
         if conf['mention_loss_coef']:
             gold_mention_scores = top_span_mention_scores[top_span_cluster_ids > 0]
+            non_gold_mention_scores = top_span_mention_scores[top_span_cluster_ids == 0]
             loss_mention = -torch.sum(torch.log(torch.sigmoid(gold_mention_scores))) * conf['mention_loss_coef']
+            loss_mention += -torch.sum(torch.log(1 - torch.sigmoid(non_gold_mention_scores))) * conf['mention_loss_coef']
             loss += loss_mention
 
         if conf['higher_order'] == 'cluster_merging':
@@ -318,13 +322,13 @@ class CorefModel(nn.Module):
             if self.update_steps % 20 == 0:
                 logger.info('---------debug step: %d---------' % self.update_steps)
                 # logger.info('candidates: %d; antecedents: %d' % (num_candidates, max_top_antecedents))
-                logger.info('spans/gold: %d/%d; ratio: %.2f' % (num_top_spans, (top_span_cluster_ids > 0).cpu().numpy().sum(), (top_span_cluster_ids > 0).cpu().numpy().sum()/num_top_spans))
+                logger.info('spans/gold: %d/%d; ratio: %.2f' % (num_top_spans, (top_span_cluster_ids > 0).sum(), (top_span_cluster_ids > 0).sum()/num_top_spans))
                 if conf['mention_loss_coef']:
-                    logger.info('mention loss: %.4f' % loss_mention.item())
+                    logger.info('mention loss: %.4f' % loss_mention)
                 if conf['loss_type'] == 'marginalized':
-                    logger.info('norm/gold: %.4f/%.4f' % (torch.sum(log_norm).item(), torch.sum(log_marginalized_antecedent_scores).item()))
+                    logger.info('norm/gold: %.4f/%.4f' % (torch.sum(log_norm), torch.sum(log_marginalized_antecedent_scores)))
                 else:
-                    logger.info('loss: %.4f' % loss.item())
+                    logger.info('loss: %.4f' % loss)
         self.update_steps += 1
 
         return [candidate_starts, candidate_ends, candidate_mention_scores, top_span_starts, top_span_ends, top_antecedent_idx, top_antecedent_scores], loss

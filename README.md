@@ -1,8 +1,6 @@
-This repository is currently in sync with this [repo](https://github.com/emorynlp/coref-hoi) @ EmoryNLP.
-
 # End-to-End Coreference Resolution with Different Higher-Order Inference Methods
 
-This repository contains the implementation of the paper: [Revealing the Myth of Higher-Order Inference in Coreference Resolution](https://arxiv.org/abs/2009.12013).
+This repository contains the implementation of the paper: [Revealing the Myth of Higher-Order Inference in Coreference Resolution](https://www.aclweb.org/anthology/2020.emnlp-main.686.pdf).
 
 ## Architecture
 
@@ -60,3 +58,17 @@ Some important configurations in [experiments.conf](experiments.conf):
 * `coref_depth` and `higher_order`: controlling the higher-order inference module
 * `bert_pretrained_name_or_path`: the name/path of the pretrained BERT model ([HuggingFace BERT models](https://huggingface.co/transformers/main_classes/model.html#transformers.PreTrainedModel.from_pretrained))
 * `max_training_sentences`: the maximum segments to use when document is too long; for BERT-Large and SpanBERT-Large, set to `3` for 32GB GPU or `2` for 24GB GPU
+
+## Citation
+```
+@inproceedings{xu-choi-2020-revealing,
+    title = "Revealing the Myth of Higher-Order Inference in Coreference Resolution",
+    author = "Xu, Liyan  and  Choi, Jinho D.",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    month = nov,
+    year = "2020",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.emnlp-main.686",
+    pages = "8527--8533"
+}
+```
