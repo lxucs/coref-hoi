@@ -175,7 +175,7 @@ def _merge_clusters(cluster_emb, cluster_sizes, cluster1_id, cluster2_id, reduce
     if reduce == 'mean':
         cluster_emb[cluster2_id] = (cluster_emb[cluster1_id] * cluster1_size + cluster_emb[cluster2_id] * cluster2_size) / (cluster1_size + cluster2_size)
     elif reduce == 'max':
-        cluster_emb[cluster2_id], _ = torch.max(torch.stack([cluster_emb[cluster1_id], cluster_emb[cluster2_id]]), dim=0)
+        cluster_emb[cluster2_id], _ = torch.max(cluster_emb[cluster1_id], cluster_emb[cluster2_id])
     else:
         raise ValueError('reduce value is invalid: %s' % reduce)
     cluster_sizes[cluster2_id] += cluster_sizes[cluster1_id]
