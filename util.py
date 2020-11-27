@@ -5,6 +5,7 @@ import pyhocon
 import logging
 import torch
 import random
+from transformers import BertTokenizer
 
 
 logger = logging.getLogger(__name__)
@@ -12,6 +13,10 @@ logger = logging.getLogger(__name__)
 
 def flatten(l):
     return [item for sublist in l for item in sublist]
+
+
+def get_tokenizer(bert_tokenizer_name):
+    return BertTokenizer.from_pretrained(bert_tokenizer_name)
 
 
 def initialize_config(config_name):

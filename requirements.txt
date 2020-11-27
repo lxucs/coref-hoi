@@ -6,3 +6,4 @@ scikit-learn==0.22.1
 pyhocon
 graphviz
 tensorboard
+spacy
