@@ -12,6 +12,7 @@ There are four higher-order inference (HOI) methods experimented: **Attended Ant
 * [run.py](run.py): training and evaluation
 * [model.py](model.py): the coreference model
 * [higher_order.py](higher_order.py): higher-order inference modules
+* [predict.py](predict.py): script for prediction on custom input
 * [analyze.py](analyze.py): result analysis
 * [preprocess.py](preprocess.py): converting CoNLL files to examples
 * [tensorize.py](tensorize.py): tensorizing example
@@ -43,6 +44,11 @@ Evaluate a model on the dev/test set:
 * `python evaluate.py [config] [model_id] [gpu_id]`
     * e.g. Attended Antecedent:`python evaluate.py train_spanbert_large_ml0_d2 May08_12-38-29_58000 0`
 
+## Prediction
+Prediction on custom input: see `python predict.py -h`
+* Interactive user input: `python predict.py --config_name=[config] --model_identifier=[model_id] --gpu_id=[gpu_id]`
+    * E.g. `python predict.py --config_name=train_spanbert_large_ml0_d1 --model_identifier=May10_03-28-49_54000 --gpu_id=0`
+* Input from file (jsonlines file of this [format](https://github.com/mandarjoshi90/coref#batched-prediction-instructions)): `python predict.py --config_name=[config] --model_identifier=[model_id] --gpu_id=[gpu_id] --jsonlines_path=[input_path]  --output_path=[output_path]`
 ## Training
 `python run.py [config] [gpu_id]`
 

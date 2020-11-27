@@ -4,7 +4,6 @@ import os
 import re
 import collections
 import json
-from transformers import BertTokenizer
 import conll
 import util
 
@@ -77,8 +76,8 @@ class DocumentState(object):
                     speakers.append('[SPL]')
                 elif subtoken_info is not None:  # First subtoken of each word
                     speakers.append(subtoken_info[9])
-                    if subtoken_info[4] == 'PRP':
-                        self.pronouns.append(subtoken_idx)
+                    # if subtoken_info[4] == 'PRP':  # Uncomment if needed
+                    #     self.pronouns.append(subtoken_idx)
                 else:
                     speakers.append(speakers[-1])
                 subtoken_idx += 1
@@ -246,7 +245,7 @@ def minimize_partition(partition, extension, args, tokenizer):
 
 
 def minimize_language(args):
-    tokenizer = BertTokenizer.from_pretrained(args.tokenizer_name)
+    tokenizer = util.get_tokenizer(args.tokenizer_name)
 
     minimize_partition('dev', 'v4_gold_conll', args, tokenizer)
     minimize_partition('test', 'v4_gold_conll', args, tokenizer)

@@ -1,7 +1,6 @@
 import util
 import numpy as np
 import random
-from transformers import BertTokenizer
 import os
 from os.path import join
 import json
@@ -21,7 +20,18 @@ class CorefDataProcessor:
         self.max_training_seg = config['max_training_sentences']
         self.data_dir = config['data_dir']
 
-        # Get tensorized samples
+        self.tokenizer = util.get_tokenizer(config['bert_tokenizer_name'])
+        self.tensor_samples, self.stored_info = None, None  # For dataset samples; lazy loading
+
+    def get_tensor_examples_from_custom_input(self, samples):
+        """ For interactive samples; no caching """
+        tensorizer = Tensorizer(self.config, self.tokenizer)
+        tensor_samples = [tensorizer.tensorize_example(sample, False) for sample in samples]
+        tensor_samples = [(doc_key, self.convert_to_torch_tensor(*tensor)) for doc_key, tensor in tensor_samples]
+        return tensor_samples, tensorizer.stored_info
+
+    def get_tensor_examples(self):
+        """ For dataset samples """
         cache_path = self.get_cache_path()
         if os.path.exists(cache_path):
             # Load cached tensors if exists
@@ -31,11 +41,11 @@ class CorefDataProcessor:
         else:
             # Generate tensorized samples
             self.tensor_samples = {}
-            tensorizer = Tensorizer(self.config)
+            tensorizer = Tensorizer(self.config, self.tokenizer)
             paths = {
-                'trn': join(self.data_dir, f'train.{language}.{self.max_seg_len}.jsonlines'),
-                'dev': join(self.data_dir, f'dev.{language}.{self.max_seg_len}.jsonlines'),
-                'tst': join(self.data_dir, f'test.{language}.{self.max_seg_len}.jsonlines')
+                'trn': join(self.data_dir, f'train.{self.language}.{self.max_seg_len}.jsonlines'),
+                'dev': join(self.data_dir, f'dev.{self.language}.{self.max_seg_len}.jsonlines'),
+                'tst': join(self.data_dir, f'test.{self.language}.{self.max_seg_len}.jsonlines')
             }
             for split, path in paths.items():
                 logger.info('Tensorizing examples from %s; results will be cached)' % path)
@@ -43,11 +53,16 @@ class CorefDataProcessor:
                 with open(path, 'r') as f:
                     samples = [json.loads(line) for line in f.readlines()]
                 tensor_samples = [tensorizer.tensorize_example(sample, is_training) for sample in samples]
-                self.tensor_samples[split] = [(doc_key, self.convert_to_torch_tensor(*tensor)) for doc_key, tensor in tensor_samples]
+                self.tensor_samples[split] = [(doc_key, self.convert_to_torch_tensor(*tensor)) for doc_key, tensor
+                                              in tensor_samples]
             self.stored_info = tensorizer.stored_info
             # Cache tensorized samples
             with open(cache_path, 'wb') as f:
                 pickle.dump((self.tensor_samples, self.stored_info), f)
+        return self.tensor_samples['trn'], self.tensor_samples['dev'], self.tensor_samples['tst']
+
+    def get_stored_info(self):
+        return self.stored_info
 
     @classmethod
     def convert_to_torch_tensor(cls, input_ids, input_mask, speaker_ids, sentence_len, genre, sentence_map,
@@ -65,22 +80,15 @@ class CorefDataProcessor:
         return input_ids, input_mask, speaker_ids, sentence_len, genre, sentence_map, \
                is_training, gold_starts, gold_ends, gold_mention_cluster_map,
 
-    def get_tensor_examples(self):
-        # For each split, return list of tensorized samples to allow variable length input (batch size = 1)
-        return self.tensor_samples['trn'], self.tensor_samples['dev'], self.tensor_samples['tst']
-
-    def get_stored_info(self):
-        return self.stored_info
-
     def get_cache_path(self):
         cache_path = join(self.data_dir, f'cached.tensors.{self.language}.{self.max_seg_len}.{self.max_training_seg}.bin')
         return cache_path
 
 
 class Tensorizer:
-    def __init__(self, config):
+    def __init__(self, config, tokenizer):
         self.config = config
-        self.tokenizer = BertTokenizer.from_pretrained(config['bert_tokenizer_name'])
+        self.tokenizer = tokenizer
 
         # Will be used in evaluation
         self.stored_info = {}

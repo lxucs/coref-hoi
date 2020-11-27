@@ -191,7 +191,8 @@ class Runner:
         model.to(self.device)
         predicted_spans, predicted_antecedents, predicted_clusters = [], [], []
 
-        for i, tensor_example in enumerate(tensor_examples):
+        model.eval()
+        for i, (doc_key, tensor_example) in enumerate(tensor_examples):
             tensor_example = tensor_example[:7]
             example_gpu = [d.to(self.device) for d in tensor_example]
             with torch.no_grad():
