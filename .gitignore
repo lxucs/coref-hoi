@@ -3,3 +3,7 @@
 .pyc
 tmp.py
 conll-2012
+data
+ontonotes-release-5.0
+.vscode
+__pycache__
