@@ -15,5 +15,10 @@ def evaluate(config_name, gpu_id, saved_suffix):
 
 
 if __name__ == '__main__':
-    config_name, saved_suffix, gpu_id = sys.argv[1], sys.argv[2], int(sys.argv[3])
+    config_name, saved_suffix = sys.argv[1], sys.argv[2]
+    if len(sys.argv) < 4:
+        gpu_id = None
+    else:
+        gpu_id = int(sys.argv[3])
+        
     evaluate(config_name, gpu_id, saved_suffix)
