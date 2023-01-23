@@ -378,6 +378,26 @@ class CorefModel(nn.Module):
                 predicted_antecedents.append(antecedent_idx[i][idx])
         return predicted_antecedents
 
+    def get_k_best_predicted_antecedents(self, antecedent_idx, antecedent_scores, k):
+        """ 
+        CPU list input 
+        Adaptation of `get_predicted_antecedents` giving the k best antecedents indices instead of the best one alone
+        """
+        num_spans = antecedent_idx.shape[0]
+        num_antecedents_per_span = antecedent_idx.shape[1]
+        assert k <= num_antecedents_per_span
+        predicted_k_best_antecedents = np.zeros(num_spans, k)
+        topk_indices = np.argsort(antecedent_scores, axis=1)[::-1][k:] # sort in descending order then take the k first (so the k best)
+        topk_indices -= 1 #shift of indices, same as in get_predicted_antecedents
+        for i in range(num_spans):
+            for rank in range(k):
+                idx = topk_indices[i][rank]
+                if idx < 0:
+                    predicted_k_best_antecedents[i, rank] = -1
+                else:
+                    predicted_k_best_antecedents[i, rank] = antecedent_idx[i][idx]
+        return predicted_k_best_antecedents
+
     def get_predicted_clusters(self, span_starts, span_ends, antecedent_idx, antecedent_scores):
         """ CPU list input """
         # Get predicted antecedents
