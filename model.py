@@ -378,19 +378,19 @@ class CorefModel(nn.Module):
                 predicted_antecedents.append(antecedent_idx[i][idx])
         return predicted_antecedents
 
-    def get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, span_starts, span_ends, k):
+    def get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, k):
         """ 
         Adaptation of `get_predicted_antecedents` giving the k best antecedents indices instead of the best one alone
 
-        Input : 4 CPU lists input *antecedent_idx*, *antecedent_scores*, *span_starts*, *span_ends*, and integer *k* <= number of antecedents per span
-        Output : 4 tensors *k_best_antecedent_idx*, *k_best_antecedent_scores*, *k_best_antecedent_starts*, *k_best_antecedent_ends* of shape (num_spans, k)
+        Input : 
+            - 2 CPU lists input *antecedent_idx*, *antecedent_scores*
+            - integer *k* <= number of antecedents per span
+        Output : 2 tensors *k_best_antecedent_idx*, *k_best_antecedent_scores* of shape (num_spans, k)
         """
         num_spans = len(antecedent_idx)
         num_antecedents_per_span = len(antecedent_idx[0])
         assert k <= num_antecedents_per_span
         k_best_antecedent_idx = torch.zeros(num_spans, k, dtype=torch.long)
-        k_best_antecedent_starts = torch.zeros(num_spans, k, dtype=torch.long)
-        k_best_antecedent_ends = torch.zeros(num_spans, k, dtype=torch.long)
         k_best_antecedent_scores = torch.from_numpy(np.flip(np.sort(antecedent_scores, axis=1), axis=1).copy()[:,:k]) # sort in descending order then take the k first (so the k best)
         topk_indices = np.flip(np.argsort(antecedent_scores, axis=1), axis=1)[:,:k] 
         topk_indices -= 1 #shift of indices, same as in get_predicted_antecedents
@@ -399,14 +399,10 @@ class CorefModel(nn.Module):
                 topk_idx = topk_indices[i][rank] # antecedent index relative to each span (going from -1 to num_antecedent_per_span - 1), corresponds to idx in *get_predicted_antecedents*
                 if topk_idx < 0:
                     k_best_antecedent_idx[i, rank] = -1
-                    k_best_antecedent_starts[i, rank] = -1
-                    k_best_antecedent_ends[i, rank] = -1
                 else:
                     global_idx = antecedent_idx[i][topk_idx] # antecedent index according to the indexation of all spans in the document
                     k_best_antecedent_idx[i, rank] = global_idx
-                    k_best_antecedent_starts[i, rank] = span_starts[global_idx]
-                    k_best_antecedent_ends[i, rank] = span_ends[global_idx]
-        return k_best_antecedent_idx, k_best_antecedent_scores, k_best_antecedent_starts, k_best_antecedent_ends
+        return k_best_antecedent_idx, k_best_antecedent_scores
 
     def get_predicted_clusters(self, span_starts, span_ends, antecedent_idx, antecedent_scores):
         """ CPU list input """
