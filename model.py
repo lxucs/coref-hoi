@@ -396,15 +396,16 @@ class CorefModel(nn.Module):
         topk_indices -= 1 #shift of indices, same as in get_predicted_antecedents
         for i in range(num_spans):
             for rank in range(k):
-                idx = topk_indices[i][rank]
-                if idx < 0:
+                topk_idx = topk_indices[i][rank] # antecedent index relative to each span (going from -1 to num_antecedent_per_span - 1), corresponds to idx in *get_predicted_antecedents*
+                if topk_idx < 0:
                     k_best_antecedent_idx[i, rank] = -1
                     k_best_antecedent_starts[i, rank] = -1
                     k_best_antecedent_ends[i, rank] = -1
                 else:
-                    k_best_antecedent_idx[i, rank] = antecedent_idx[i][idx]
-                    k_best_antecedent_starts[i, rank] = span_starts[i][idx]
-                    k_best_antecedent_ends[i, rank] = span_ends[i][idx]
+                    global_idx = antecedent_idx[i][topk_idx] # antecedent index according to the indexation of all spans in the document
+                    k_best_antecedent_idx[i, rank] = global_idx
+                    k_best_antecedent_starts[i, rank] = span_starts[global_idx]
+                    k_best_antecedent_ends[i, rank] = span_ends[global_idx]
         return k_best_antecedent_idx, k_best_antecedent_scores, k_best_antecedent_starts, k_best_antecedent_ends
 
     def get_predicted_clusters(self, span_starts, span_ends, antecedent_idx, antecedent_scores):
