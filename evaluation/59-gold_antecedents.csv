@@ -1,0 +1,7 @@
+doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
+bn/abc/00/abc_0049_0, 1, 24, 25, 0, 18, 20, 1
+bn/abc/00/abc_0049_0, 3, 31, 31, 1, 24, 25, 1
+bn/abc/00/abc_0049_0, 4, 38, 38, 3, 31, 31, 1
+bn/abc/00/abc_0049_0, 5, 51, 55, 4, 38, 38, 1
+bn/abc/00/abc_0049_0, 6, 59, 60, 2, 28, 29, 2
+bn/abc/00/abc_0049_0, 7, 69, 69, 5, 51, 55, 1

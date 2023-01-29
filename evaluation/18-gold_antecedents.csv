@@ -1,0 +1,12 @@
+doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
+bc/cnn/00/cnn_0008_0, 1, 28, 28, 0, 1, 1, 1
+bc/cnn/00/cnn_0008_0, 5, 75, 75, 4, 64, 65, 4
+bc/cnn/00/cnn_0008_0, 6, 78, 78, 5, 75, 75, 4
+bc/cnn/00/cnn_0008_0, 8, 115, 118, 7, 84, 84, 5
+bc/cnn/00/cnn_0008_0, 10, 131, 131, 8, 115, 118, 5
+bc/cnn/00/cnn_0008_0, 11, 133, 133, 10, 131, 131, 5
+bc/cnn/00/cnn_0008_0, 12, 153, 153, 11, 133, 133, 5
+bc/cnn/00/cnn_0008_0, 13, 158, 158, 12, 153, 153, 5
+bc/cnn/00/cnn_0008_0, 14, 172, 172, 9, 120, 120, 6
+bc/cnn/00/cnn_0008_0, 15, 174, 184, 2, 51, 57, 3
+bc/cnn/00/cnn_0008_0, 16, 180, 184, 3, 54, 56, 2

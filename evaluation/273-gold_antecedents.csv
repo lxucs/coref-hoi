@@ -1,0 +1,12 @@
+doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
+nw/xinhua/02/chtb_0239_0, 3, 78, 80, 1, 16, 18, 2
+nw/xinhua/02/chtb_0239_0, 4, 78, 85, 2, 16, 23, 3
+nw/xinhua/02/chtb_0239_0, 5, 87, 87, 4, 78, 85, 3
+nw/xinhua/02/chtb_0239_0, 6, 96, 98, 5, 87, 87, 3
+nw/xinhua/02/chtb_0239_0, 7, 102, 104, 3, 78, 80, 2
+nw/xinhua/02/chtb_0239_0, 8, 137, 137, 7, 102, 104, 2
+nw/xinhua/02/chtb_0239_0, 9, 171, 171, 8, 137, 137, 2
+nw/xinhua/02/chtb_0239_0, 10, 204, 204, 9, 171, 171, 2
+nw/xinhua/02/chtb_0239_0, 11, 274, 276, 10, 204, 204, 2
+nw/xinhua/02/chtb_0239_0, 12, 296, 297, 11, 274, 276, 2
+nw/xinhua/02/chtb_0239_0, 13, 334, 336, 0, 7, 7, 1

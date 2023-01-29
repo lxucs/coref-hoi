@@ -1,0 +1,5 @@
+doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
+nw/wsj/23/wsj_2388_0, 3, 25, 26, 0, 1, 4, 1
+nw/wsj/23/wsj_2388_0, 4, 38, 38, 1, 6, 11, 2
+nw/wsj/23/wsj_2388_0, 5, 57, 58, 2, 13, 14, 3
+nw/wsj/23/wsj_2388_0, 6, 80, 81, 5, 57, 58, 3

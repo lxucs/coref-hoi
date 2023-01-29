@@ -1,0 +1,2 @@
+doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
+bn/cnn/00/cnn_0099_0, 1, 61, 61, 0, 55, 59, 1

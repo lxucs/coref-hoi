@@ -1,0 +1,4 @@
+doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
+bn/cnn/02/cnn_0269_0, 2, 17, 18, 1, 6, 7, 2
+bn/cnn/02/cnn_0269_0, 4, 52, 52, 3, 34, 35, 3
+bn/cnn/02/cnn_0269_0, 5, 70, 72, 0, 1, 2, 1

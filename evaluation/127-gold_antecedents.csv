@@ -1,0 +1,13 @@
+doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
+bn/voa/00/voa_0059_0, 3, 24, 24, 2, 11, 16, 2
+bn/voa/00/voa_0059_0, 5, 35, 36, 3, 24, 24, 2
+bn/voa/00/voa_0059_0, 6, 38, 39, 0, 1, 16, 3
+bn/voa/00/voa_0059_0, 7, 46, 66, 1, 8, 16, 1
+bn/voa/00/voa_0059_0, 8, 61, 66, 4, 31, 36, 4
+bn/voa/00/voa_0059_0, 9, 65, 66, 5, 35, 36, 2
+bn/voa/00/voa_0059_0, 10, 70, 74, 9, 65, 66, 2
+bn/voa/00/voa_0059_0, 11, 80, 93, 8, 61, 66, 4
+bn/voa/00/voa_0059_0, 12, 85, 89, 10, 70, 74, 2
+bn/voa/00/voa_0059_0, 13, 101, 102, 12, 85, 89, 2
+bn/voa/00/voa_0059_0, 14, 104, 109, 7, 46, 66, 1
+bn/voa/00/voa_0059_0, 15, 104, 110, 6, 38, 39, 3
