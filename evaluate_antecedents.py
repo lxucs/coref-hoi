@@ -32,7 +32,7 @@ def evaluate_antecedents():
             out_file.write(f"## Document {i} ({doc_key}) :\n")
             for rank in range(1, K+1):
                 out_file.write(f"Number of correct antecedent(s) at rank {rank}  : {correct_antecedent_at_rank[rank]}/{nb_gold_antecedents}\n")
-            out_file.write(f"Number of unfound anaphor(s)/antecedent(s) : {nb_gold_antecedents - sum(correct_antecedent_at_rank.values())}/{nb_gold_antecedents}\n\n")
+            out_file.write(f"Number of not found anaphor(s)/antecedent(s) : {nb_gold_antecedents - sum(correct_antecedent_at_rank.values())}/{nb_gold_antecedents}\n\n")
             gold_file.close()
             pred_file.close()
 
