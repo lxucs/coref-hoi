@@ -1,0 +1,4 @@
+doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
+bn/abc/00/abc_0059_0, 11, 35, 35, 1, 75.07844543457031, 0, 1, 7
+bn/abc/00/abc_0059_0, 14, 37, 37, 1, 73.43378448486328, 11, 35, 35
+bn/abc/00/abc_0059_0, 14, 37, 37, 2, 62.482513427734375, 0, 1, 7

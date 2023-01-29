@@ -1,0 +1,5 @@
+doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
+bn/voa/02/voa_0229_0, 11, 22, 24, 1, 72.01921081542969, 7, 11, 14
+bn/voa/02/voa_0229_0, 19, 39, 39, 1, 61.1856803894043, 6, 11, 11
+bn/voa/02/voa_0229_0, 21, 44, 44, 1, 61.7293701171875, 6, 11, 11
+bn/voa/02/voa_0229_0, 21, 44, 44, 2, 61.04739761352539, 19, 39, 39

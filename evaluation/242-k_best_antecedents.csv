@@ -1,0 +1,6 @@
+doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
+nw/wsj/23/wsj_2388_0, 14, 25, 28, 1, 55.39849853515625, 0, 1, 4
+nw/wsj/23/wsj_2388_0, 19, 38, 40, 1, 38.119972229003906, 3, 6, 11
+nw/wsj/23/wsj_2388_0, 26, 57, 58, 1, 60.880218505859375, 5, 13, 14
+nw/wsj/23/wsj_2388_0, 34, 80, 81, 1, 59.901329040527344, 5, 13, 14
+nw/wsj/23/wsj_2388_0, 34, 80, 81, 2, 48.19649124145508, 26, 57, 58

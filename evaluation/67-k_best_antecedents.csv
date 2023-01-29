@@ -1,0 +1,7 @@
+doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
+bn/cnn/00/cnn_0059_0, 22, 46, 46, 1, 65.66922760009766, 12, 17, 25
+bn/cnn/00/cnn_0059_0, 29, 70, 76, 1, 78.11409759521484, 12, 17, 25
+bn/cnn/00/cnn_0059_0, 29, 70, 76, 2, 68.75847625732422, 22, 46, 46
+bn/cnn/00/cnn_0059_0, 31, 79, 80, 1, 92.76934814453125, 29, 70, 76
+bn/cnn/00/cnn_0059_0, 31, 79, 80, 2, 86.78976440429688, 22, 46, 46
+bn/cnn/00/cnn_0059_0, 31, 79, 80, 3, 78.5894775390625, 12, 17, 25

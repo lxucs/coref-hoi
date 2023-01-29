@@ -1,0 +1,3 @@
+doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
+bn/cnn/03/cnn_0399_0, 10, 28, 29, 1, 25.891315460205078, 6, 14, 16
+bn/cnn/03/cnn_0399_0, 28, 82, 82, 1, 57.63850021362305, 25, 64, 64

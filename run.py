@@ -154,6 +154,27 @@ class Runner:
         tb_writer.close()
         return loss_history
 
+    def k_best_antecedents_logging(self, doc_number, doc_key, span_starts, span_ends, k_best_antecedent_idx, k_best_antecedent_scores):
+        """
+        k_best_antecedent logging for the document n° *doc_key* into evaluation/{doc_key}-k_best_antecedents.csv with comma separator
+        """
+        with open(f"evaluation/{doc_number}-k_best_antecedents.csv", "w") as file:
+            file.write("doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end\n")
+            assert len(span_starts) == k_best_antecedent_idx.shape[0]
+            nb_spans = len(span_starts)
+            k = k_best_antecedent_idx.shape[1]
+            for span_idx in range(nb_spans):
+                for rank in range(k):
+                    antecedent_idx = k_best_antecedent_idx[span_idx, rank]
+                    antecedent_score = k_best_antecedent_scores[span_idx, rank]
+                    if antecedent_score > 0: # else, dummy antecedent : so do not log
+                        file.write(f"{doc_key}, {span_idx}, {span_starts[span_idx]}, {span_ends[span_idx]}, {rank+1}, {antecedent_score}, {antecedent_idx}, {span_starts[antecedent_idx]}, {span_ends[antecedent_idx]}\n")
+
+    def gold_antecedents_logging(self, doc_key, tensor_examples):
+        # TODO
+        # (_, _, _, _, _, _, _, gold_starts, gold_ends, gold_mention_cluster_map) = tensor_example
+        pass
+
     def evaluate(self, model, tensor_examples, stored_info, step, official=False, conll_path=None, tb_writer=None):
         logger.info('Step %d: evaluating on %d samples...' % (step, len(tensor_examples)))
         model.to(self.device)
@@ -169,22 +190,27 @@ class Runner:
                 _, _, _, span_starts, span_ends, antecedent_idx, antecedent_scores = model(*example_gpu)
             span_starts, span_ends = span_starts.tolist(), span_ends.tolist()
             antecedent_idx, antecedent_scores = antecedent_idx.tolist(), antecedent_scores.tolist()
-            predicted_clusters = model.update_evaluator(span_starts, span_ends, antecedent_idx, antecedent_scores, gold_clusters, evaluator)
-            doc_to_prediction[doc_key] = predicted_clusters
 
-        p, r, f = evaluator.get_prf()
-        metrics = {'Eval_Avg_Precision': p * 100, 'Eval_Avg_Recall': r * 100, 'Eval_Avg_F1': f * 100}
-        for name, score in metrics.items():
-            logger.info('%s: %.2f' % (name, score))
-            if tb_writer:
-                tb_writer.add_scalar(name, score, step)
+            # logging k best antecedents for each span of each test document
+            k_best_antecedent_idx, k_best_antecedent_scores = CorefModel.get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, k=5)
+            self.k_best_antecedents_logging(i, doc_key, span_starts, span_ends, k_best_antecedent_idx, k_best_antecedent_scores)
+            
+            # predicted_clusters = model.update_evaluator(span_starts, span_ends, antecedent_idx, antecedent_scores, gold_clusters, evaluator)
+            # doc_to_prediction[doc_key] = predicted_clusters
 
-        if official:
-            conll_results = conll.evaluate_conll(conll_path, doc_to_prediction, stored_info['subtoken_maps'])
-            official_f1 = sum(results["f"] for results in conll_results.values()) / len(conll_results)
-            logger.info('Official avg F1: %.4f' % official_f1)
+        # p, r, f = evaluator.get_prf()
+        # metrics = {'Eval_Avg_Precision': p * 100, 'Eval_Avg_Recall': r * 100, 'Eval_Avg_F1': f * 100}
+        # for name, score in metrics.items():
+        #     logger.info('%s: %.2f' % (name, score))
+        #     if tb_writer:
+        #         tb_writer.add_scalar(name, score, step)
 
-        return f * 100, metrics
+        # if official:
+        #     conll_results = conll.evaluate_conll(conll_path, doc_to_prediction, stored_info['subtoken_maps'])
+        #     official_f1 = sum(results["f"] for results in conll_results.values()) / len(conll_results)
+        #     logger.info('Official avg F1: %.4f' % official_f1)
+
+        # return f * 100, metrics
 
     def predict(self, model, tensor_examples):
         logger.info('Predicting %d samples...' % len(tensor_examples))

@@ -1,0 +1,2 @@
+doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
+bn/pri/00/pri_0059_0, 22, 51, 52, 1, 74.70076751708984, 20, 35, 45
