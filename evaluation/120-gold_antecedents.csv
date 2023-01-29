@@ -1,6 +1,6 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-bn/pri/00/pri_0099_0, 3, 22, 36, 1, 6, 20, 3
-bn/pri/00/pri_0099_0, 4, 26, 26, 2, 11, 14, 2
-bn/pri/00/pri_0099_0, 5, 45, 46, 0, 1, 2, 1
-bn/pri/00/pri_0099_0, 6, 48, 48, 3, 22, 36, 3
-bn/pri/00/pri_0099_0, 7, 69, 69, 5, 45, 46, 1
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bn/pri/00/pri_0099_0,3,22,36,1,6,20,3
+bn/pri/00/pri_0099_0,4,26,26,2,11,14,2
+bn/pri/00/pri_0099_0,5,45,46,0,1,2,1
+bn/pri/00/pri_0099_0,6,48,48,3,22,36,3
+bn/pri/00/pri_0099_0,7,69,69,5,45,46,1

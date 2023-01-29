@@ -1,3 +1,3 @@
-doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
-bn/cnn/00/cnn_0009_0, 6, 17, 18, 1, 70.20219421386719, 0, 1, 4
-bn/cnn/00/cnn_0009_0, 6, 17, 18, 2, 4.562723159790039, 1, 1, 15
+doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end
+bn/cnn/00/cnn_0009_0,6,17,18,1,70.20219421386719,0,1,4
+bn/cnn/00/cnn_0009_0,6,17,18,2,4.562723159790039,1,1,15

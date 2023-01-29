@@ -1,11 +1,11 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-nw/wsj/23/wsj_2378_0, 5, 85, 86, 1, 8, 10, 2
-nw/wsj/23/wsj_2378_0, 7, 97, 97, 4, 65, 81, 5
-nw/wsj/23/wsj_2378_0, 9, 131, 132, 5, 85, 86, 2
-nw/wsj/23/wsj_2378_0, 10, 150, 151, 6, 92, 94, 6
-nw/wsj/23/wsj_2378_0, 11, 230, 234, 9, 131, 132, 2
-nw/wsj/23/wsj_2378_0, 12, 240, 243, 3, 65, 68, 4
-nw/wsj/23/wsj_2378_0, 13, 245, 256, 8, 97, 107, 7
-nw/wsj/23/wsj_2378_0, 14, 270, 270, 12, 240, 243, 4
-nw/wsj/23/wsj_2378_0, 15, 294, 294, 0, 3, 5, 1
-nw/wsj/23/wsj_2378_0, 16, 294, 298, 2, 11, 14, 3
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+nw/wsj/23/wsj_2378_0,5,85,86,1,8,10,2
+nw/wsj/23/wsj_2378_0,7,97,97,4,65,81,5
+nw/wsj/23/wsj_2378_0,9,131,132,5,85,86,2
+nw/wsj/23/wsj_2378_0,10,150,151,6,92,94,6
+nw/wsj/23/wsj_2378_0,11,230,234,9,131,132,2
+nw/wsj/23/wsj_2378_0,12,240,243,3,65,68,4
+nw/wsj/23/wsj_2378_0,13,245,256,8,97,107,7
+nw/wsj/23/wsj_2378_0,14,270,270,12,240,243,4
+nw/wsj/23/wsj_2378_0,15,294,294,0,3,5,1
+nw/wsj/23/wsj_2378_0,16,294,298,2,11,14,3

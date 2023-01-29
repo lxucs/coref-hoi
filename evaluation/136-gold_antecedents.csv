@@ -1,10 +1,10 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-bn/voa/01/voa_0149_0, 4, 34, 43, 0, 7, 16, 4
-bn/voa/01/voa_0149_0, 5, 52, 53, 3, 12, 16, 3
-bn/voa/01/voa_0149_0, 6, 59, 59, 4, 34, 43, 4
-bn/voa/01/voa_0149_0, 7, 63, 63, 5, 52, 53, 3
-bn/voa/01/voa_0149_0, 8, 71, 71, 7, 63, 63, 3
-bn/voa/01/voa_0149_0, 9, 75, 75, 1, 8, 9, 1
-bn/voa/01/voa_0149_0, 10, 82, 82, 2, 12, 14, 2
-bn/voa/01/voa_0149_0, 11, 87, 90, 6, 59, 59, 4
-bn/voa/01/voa_0149_0, 12, 89, 89, 9, 75, 75, 1
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bn/voa/01/voa_0149_0,4,34,43,0,7,16,4
+bn/voa/01/voa_0149_0,5,52,53,3,12,16,3
+bn/voa/01/voa_0149_0,6,59,59,4,34,43,4
+bn/voa/01/voa_0149_0,7,63,63,5,52,53,3
+bn/voa/01/voa_0149_0,8,71,71,7,63,63,3
+bn/voa/01/voa_0149_0,9,75,75,1,8,9,1
+bn/voa/01/voa_0149_0,10,82,82,2,12,14,2
+bn/voa/01/voa_0149_0,11,87,90,6,59,59,4
+bn/voa/01/voa_0149_0,12,89,89,9,75,75,1

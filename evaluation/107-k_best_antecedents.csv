@@ -1,2 +1,2 @@
-doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
-bn/nbc/00/nbc_0009_0, 21, 73, 74, 1, 68.81314849853516, 17, 56, 64
+doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end
+bn/nbc/00/nbc_0009_0,21,73,74,1,68.81314849853516,17,56,64

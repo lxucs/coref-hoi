@@ -1,13 +1,13 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-nw/xinhua/01/chtb_0109_0, 2, 72, 73, 1, 31, 32, 2
-nw/xinhua/01/chtb_0109_0, 3, 94, 96, 0, 13, 13, 1
-nw/xinhua/01/chtb_0109_0, 4, 159, 160, 2, 72, 73, 2
-nw/xinhua/01/chtb_0109_0, 5, 192, 193, 4, 159, 160, 2
-nw/xinhua/01/chtb_0109_0, 6, 223, 224, 5, 192, 193, 2
-nw/xinhua/01/chtb_0109_0, 7, 252, 253, 6, 223, 224, 2
-nw/xinhua/01/chtb_0109_0, 8, 356, 357, 7, 252, 253, 2
-nw/xinhua/01/chtb_0109_0, 9, 700, 701, 8, 356, 357, 2
-nw/xinhua/01/chtb_0109_0, 10, 736, 737, 9, 700, 701, 2
-nw/xinhua/01/chtb_0109_0, 11, 770, 771, 10, 736, 737, 2
-nw/xinhua/01/chtb_0109_0, 12, 828, 829, 11, 770, 771, 2
-nw/xinhua/01/chtb_0109_0, 13, 840, 841, 12, 828, 829, 2
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+nw/xinhua/01/chtb_0109_0,2,72,73,1,31,32,2
+nw/xinhua/01/chtb_0109_0,3,94,96,0,13,13,1
+nw/xinhua/01/chtb_0109_0,4,159,160,2,72,73,2
+nw/xinhua/01/chtb_0109_0,5,192,193,4,159,160,2
+nw/xinhua/01/chtb_0109_0,6,223,224,5,192,193,2
+nw/xinhua/01/chtb_0109_0,7,252,253,6,223,224,2
+nw/xinhua/01/chtb_0109_0,8,356,357,7,252,253,2
+nw/xinhua/01/chtb_0109_0,9,700,701,8,356,357,2
+nw/xinhua/01/chtb_0109_0,10,736,737,9,700,701,2
+nw/xinhua/01/chtb_0109_0,11,770,771,10,736,737,2
+nw/xinhua/01/chtb_0109_0,12,828,829,11,770,771,2
+nw/xinhua/01/chtb_0109_0,13,840,841,12,828,829,2

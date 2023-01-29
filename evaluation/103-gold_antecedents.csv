@@ -1,6 +1,6 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-bn/cnn/04/cnn_0419_0, 1, 17, 18, 0, 1, 11, 1
-bn/cnn/04/cnn_0419_0, 2, 27, 27, 1, 17, 18, 1
-bn/cnn/04/cnn_0419_0, 3, 35, 36, 2, 27, 27, 1
-bn/cnn/04/cnn_0419_0, 4, 40, 40, 3, 35, 36, 1
-bn/cnn/04/cnn_0419_0, 5, 53, 53, 4, 40, 40, 1
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bn/cnn/04/cnn_0419_0,1,17,18,0,1,11,1
+bn/cnn/04/cnn_0419_0,2,27,27,1,17,18,1
+bn/cnn/04/cnn_0419_0,3,35,36,2,27,27,1
+bn/cnn/04/cnn_0419_0,4,40,40,3,35,36,1
+bn/cnn/04/cnn_0419_0,5,53,53,4,40,40,1

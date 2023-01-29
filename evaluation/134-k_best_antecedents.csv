@@ -1,6 +1,6 @@
-doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
-bn/voa/01/voa_0129_0, 10, 25, 25, 1, 64.59942626953125, 8, 22, 23
-bn/voa/01/voa_0129_0, 10, 25, 25, 2, 14.192800521850586, 3, 8, 9
-bn/voa/01/voa_0129_0, 12, 31, 31, 1, 57.47624969482422, 6, 12, 20
-bn/voa/01/voa_0129_0, 22, 54, 54, 1, 96.70018005371094, 18, 45, 47
-bn/voa/01/voa_0129_0, 22, 54, 54, 2, 8.867707252502441, 19, 45, 60
+doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end
+bn/voa/01/voa_0129_0,10,25,25,1,64.59942626953125,8,22,23
+bn/voa/01/voa_0129_0,10,25,25,2,14.192800521850586,3,8,9
+bn/voa/01/voa_0129_0,12,31,31,1,57.47624969482422,6,12,20
+bn/voa/01/voa_0129_0,22,54,54,1,96.70018005371094,18,45,47
+bn/voa/01/voa_0129_0,22,54,54,2,8.867707252502441,19,45,60

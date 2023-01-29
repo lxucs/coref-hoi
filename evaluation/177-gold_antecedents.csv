@@ -1,9 +1,9 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-mz/sinorama/10/ectb_1049_6, 1, 9, 24, 0, 1, 3, 1
-mz/sinorama/10/ectb_1049_6, 3, 31, 31, 1, 9, 24, 1
-mz/sinorama/10/ectb_1049_6, 4, 67, 67, 3, 31, 31, 1
-mz/sinorama/10/ectb_1049_6, 6, 80, 80, 4, 67, 67, 1
-mz/sinorama/10/ectb_1049_6, 7, 100, 100, 6, 80, 80, 1
-mz/sinorama/10/ectb_1049_6, 8, 111, 112, 2, 28, 29, 2
-mz/sinorama/10/ectb_1049_6, 9, 146, 150, 5, 74, 78, 3
-mz/sinorama/10/ectb_1049_6, 10, 275, 277, 7, 100, 100, 1
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+mz/sinorama/10/ectb_1049_6,1,9,24,0,1,3,1
+mz/sinorama/10/ectb_1049_6,3,31,31,1,9,24,1
+mz/sinorama/10/ectb_1049_6,4,67,67,3,31,31,1
+mz/sinorama/10/ectb_1049_6,6,80,80,4,67,67,1
+mz/sinorama/10/ectb_1049_6,7,100,100,6,80,80,1
+mz/sinorama/10/ectb_1049_6,8,111,112,2,28,29,2
+mz/sinorama/10/ectb_1049_6,9,146,150,5,74,78,3
+mz/sinorama/10/ectb_1049_6,10,275,277,7,100,100,1

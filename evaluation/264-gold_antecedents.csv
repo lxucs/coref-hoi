@@ -1,21 +1,21 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-nw/xinhua/01/chtb_0149_0, 3, 57, 58, 0, 22, 23, 1
-nw/xinhua/01/chtb_0149_0, 4, 68, 70, 1, 25, 27, 2
-nw/xinhua/01/chtb_0149_0, 5, 103, 103, 2, 30, 30, 3
-nw/xinhua/01/chtb_0149_0, 6, 112, 112, 5, 103, 103, 3
-nw/xinhua/01/chtb_0149_0, 7, 124, 126, 4, 68, 70, 2
-nw/xinhua/01/chtb_0149_0, 8, 136, 137, 3, 57, 58, 1
-nw/xinhua/01/chtb_0149_0, 9, 149, 149, 7, 124, 126, 2
-nw/xinhua/01/chtb_0149_0, 10, 154, 156, 9, 149, 149, 2
-nw/xinhua/01/chtb_0149_0, 11, 170, 172, 10, 154, 156, 2
-nw/xinhua/01/chtb_0149_0, 12, 196, 196, 6, 112, 112, 3
-nw/xinhua/01/chtb_0149_0, 13, 235, 236, 8, 136, 137, 1
-nw/xinhua/01/chtb_0149_0, 14, 243, 243, 12, 196, 196, 3
-nw/xinhua/01/chtb_0149_0, 15, 268, 268, 14, 243, 243, 3
-nw/xinhua/01/chtb_0149_0, 16, 290, 290, 15, 268, 268, 3
-nw/xinhua/01/chtb_0149_0, 17, 294, 295, 13, 235, 236, 1
-nw/xinhua/01/chtb_0149_0, 18, 305, 305, 16, 290, 290, 3
-nw/xinhua/01/chtb_0149_0, 19, 326, 328, 11, 170, 172, 2
-nw/xinhua/01/chtb_0149_0, 20, 331, 331, 18, 305, 305, 3
-nw/xinhua/01/chtb_0149_0, 21, 354, 356, 19, 326, 328, 2
-nw/xinhua/01/chtb_0149_0, 22, 361, 361, 20, 331, 331, 3
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+nw/xinhua/01/chtb_0149_0,3,57,58,0,22,23,1
+nw/xinhua/01/chtb_0149_0,4,68,70,1,25,27,2
+nw/xinhua/01/chtb_0149_0,5,103,103,2,30,30,3
+nw/xinhua/01/chtb_0149_0,6,112,112,5,103,103,3
+nw/xinhua/01/chtb_0149_0,7,124,126,4,68,70,2
+nw/xinhua/01/chtb_0149_0,8,136,137,3,57,58,1
+nw/xinhua/01/chtb_0149_0,9,149,149,7,124,126,2
+nw/xinhua/01/chtb_0149_0,10,154,156,9,149,149,2
+nw/xinhua/01/chtb_0149_0,11,170,172,10,154,156,2
+nw/xinhua/01/chtb_0149_0,12,196,196,6,112,112,3
+nw/xinhua/01/chtb_0149_0,13,235,236,8,136,137,1
+nw/xinhua/01/chtb_0149_0,14,243,243,12,196,196,3
+nw/xinhua/01/chtb_0149_0,15,268,268,14,243,243,3
+nw/xinhua/01/chtb_0149_0,16,290,290,15,268,268,3
+nw/xinhua/01/chtb_0149_0,17,294,295,13,235,236,1
+nw/xinhua/01/chtb_0149_0,18,305,305,16,290,290,3
+nw/xinhua/01/chtb_0149_0,19,326,328,11,170,172,2
+nw/xinhua/01/chtb_0149_0,20,331,331,18,305,305,3
+nw/xinhua/01/chtb_0149_0,21,354,356,19,326,328,2
+nw/xinhua/01/chtb_0149_0,22,361,361,20,331,331,3

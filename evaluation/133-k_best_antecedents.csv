@@ -1,3 +1,3 @@
-doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
-bn/voa/01/voa_0119_0, 19, 39, 43, 1, 44.01140213012695, 7, 7, 10
-bn/voa/01/voa_0119_0, 29, 71, 81, 1, 10.434088706970215, 13, 25, 30
+doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end
+bn/voa/01/voa_0119_0,19,39,43,1,44.01140213012695,7,7,10
+bn/voa/01/voa_0119_0,29,71,81,1,10.434088706970215,13,25,30

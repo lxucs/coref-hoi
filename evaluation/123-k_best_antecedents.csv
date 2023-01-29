@@ -1,5 +1,5 @@
-doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
-bn/voa/00/voa_0019_0, 12, 18, 38, 1, 8.77122688293457, 8, 11, 14
-bn/voa/00/voa_0019_0, 31, 69, 71, 1, 15.797998428344727, 10, 14, 14
-bn/voa/00/voa_0019_0, 38, 96, 96, 1, 50.34627151489258, 10, 14, 14
-bn/voa/00/voa_0019_0, 38, 96, 96, 2, 12.111754417419434, 31, 69, 71
+doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end
+bn/voa/00/voa_0019_0,12,18,38,1,8.77122688293457,8,11,14
+bn/voa/00/voa_0019_0,31,69,71,1,15.797998428344727,10,14,14
+bn/voa/00/voa_0019_0,38,96,96,1,50.34627151489258,10,14,14
+bn/voa/00/voa_0019_0,38,96,96,2,12.111754417419434,31,69,71

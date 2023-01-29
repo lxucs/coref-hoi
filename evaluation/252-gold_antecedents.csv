@@ -1,17 +1,17 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-nw/xinhua/00/chtb_0029_0, 2, 46, 47, 1, 29, 30, 2
-nw/xinhua/00/chtb_0029_0, 7, 84, 85, 2, 46, 47, 2
-nw/xinhua/00/chtb_0029_0, 8, 92, 93, 0, 15, 23, 1
-nw/xinhua/00/chtb_0029_0, 9, 107, 111, 3, 69, 73, 3
-nw/xinhua/00/chtb_0029_0, 10, 110, 111, 4, 72, 73, 4
-nw/xinhua/00/chtb_0029_0, 11, 135, 138, 8, 92, 93, 1
-nw/xinhua/00/chtb_0029_0, 12, 149, 149, 5, 80, 80, 5
-nw/xinhua/00/chtb_0029_0, 13, 151, 151, 6, 82, 82, 6
-nw/xinhua/00/chtb_0029_0, 14, 162, 164, 11, 135, 138, 1
-nw/xinhua/00/chtb_0029_0, 15, 179, 183, 9, 107, 111, 3
-nw/xinhua/00/chtb_0029_0, 16, 182, 183, 10, 110, 111, 4
-nw/xinhua/00/chtb_0029_0, 17, 195, 197, 14, 162, 164, 1
-nw/xinhua/00/chtb_0029_0, 18, 199, 203, 15, 179, 183, 3
-nw/xinhua/00/chtb_0029_0, 19, 202, 203, 16, 182, 183, 4
-nw/xinhua/00/chtb_0029_0, 20, 208, 210, 17, 195, 197, 1
-nw/xinhua/00/chtb_0029_0, 21, 265, 266, 19, 202, 203, 4
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+nw/xinhua/00/chtb_0029_0,2,46,47,1,29,30,2
+nw/xinhua/00/chtb_0029_0,7,84,85,2,46,47,2
+nw/xinhua/00/chtb_0029_0,8,92,93,0,15,23,1
+nw/xinhua/00/chtb_0029_0,9,107,111,3,69,73,3
+nw/xinhua/00/chtb_0029_0,10,110,111,4,72,73,4
+nw/xinhua/00/chtb_0029_0,11,135,138,8,92,93,1
+nw/xinhua/00/chtb_0029_0,12,149,149,5,80,80,5
+nw/xinhua/00/chtb_0029_0,13,151,151,6,82,82,6
+nw/xinhua/00/chtb_0029_0,14,162,164,11,135,138,1
+nw/xinhua/00/chtb_0029_0,15,179,183,9,107,111,3
+nw/xinhua/00/chtb_0029_0,16,182,183,10,110,111,4
+nw/xinhua/00/chtb_0029_0,17,195,197,14,162,164,1
+nw/xinhua/00/chtb_0029_0,18,199,203,15,179,183,3
+nw/xinhua/00/chtb_0029_0,19,202,203,16,182,183,4
+nw/xinhua/00/chtb_0029_0,20,208,210,17,195,197,1
+nw/xinhua/00/chtb_0029_0,21,265,266,19,202,203,4

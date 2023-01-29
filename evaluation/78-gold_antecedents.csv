@@ -1,6 +1,6 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-bn/cnn/01/cnn_0169_0, 3, 23, 23, 0, 1, 19, 2
-bn/cnn/01/cnn_0169_0, 4, 27, 28, 3, 23, 23, 2
-bn/cnn/01/cnn_0169_0, 5, 52, 53, 1, 4, 19, 3
-bn/cnn/01/cnn_0169_0, 6, 69, 71, 5, 52, 53, 3
-bn/cnn/01/cnn_0169_0, 7, 81, 87, 2, 9, 9, 1
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bn/cnn/01/cnn_0169_0,3,23,23,0,1,19,2
+bn/cnn/01/cnn_0169_0,4,27,28,3,23,23,2
+bn/cnn/01/cnn_0169_0,5,52,53,1,4,19,3
+bn/cnn/01/cnn_0169_0,6,69,71,5,52,53,3
+bn/cnn/01/cnn_0169_0,7,81,87,2,9,9,1

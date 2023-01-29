@@ -1,13 +1,13 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-bn/cnn/03/cnn_0379_0, 4, 24, 28, 0, 5, 7, 1
-bn/cnn/03/cnn_0379_0, 5, 37, 39, 1, 15, 18, 2
-bn/cnn/03/cnn_0379_0, 7, 43, 43, 2, 15, 19, 3
-bn/cnn/03/cnn_0379_0, 8, 49, 50, 3, 21, 30, 4
-bn/cnn/03/cnn_0379_0, 9, 53, 53, 8, 49, 50, 4
-bn/cnn/03/cnn_0379_0, 10, 63, 63, 5, 37, 39, 2
-bn/cnn/03/cnn_0379_0, 11, 81, 84, 10, 63, 63, 2
-bn/cnn/03/cnn_0379_0, 12, 87, 87, 11, 81, 84, 2
-bn/cnn/03/cnn_0379_0, 13, 89, 102, 6, 37, 41, 5
-bn/cnn/03/cnn_0379_0, 14, 94, 94, 12, 87, 87, 2
-bn/cnn/03/cnn_0379_0, 15, 94, 97, 4, 24, 28, 1
-bn/cnn/03/cnn_0379_0, 17, 121, 121, 16, 106, 106, 6
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bn/cnn/03/cnn_0379_0,4,24,28,0,5,7,1
+bn/cnn/03/cnn_0379_0,5,37,39,1,15,18,2
+bn/cnn/03/cnn_0379_0,7,43,43,2,15,19,3
+bn/cnn/03/cnn_0379_0,8,49,50,3,21,30,4
+bn/cnn/03/cnn_0379_0,9,53,53,8,49,50,4
+bn/cnn/03/cnn_0379_0,10,63,63,5,37,39,2
+bn/cnn/03/cnn_0379_0,11,81,84,10,63,63,2
+bn/cnn/03/cnn_0379_0,12,87,87,11,81,84,2
+bn/cnn/03/cnn_0379_0,13,89,102,6,37,41,5
+bn/cnn/03/cnn_0379_0,14,94,94,12,87,87,2
+bn/cnn/03/cnn_0379_0,15,94,97,4,24,28,1
+bn/cnn/03/cnn_0379_0,17,121,121,16,106,106,6

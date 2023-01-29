@@ -1,70 +1,70 @@
-doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id
-bc/phoenix/00/phoenix_0003_5, 1, 10, 10, 0, 4, 5, 1
-bc/phoenix/00/phoenix_0003_5, 3, 19, 19, 2, 10, 11, 2
-bc/phoenix/00/phoenix_0003_5, 5, 32, 32, 4, 29, 30, 3
-bc/phoenix/00/phoenix_0003_5, 6, 40, 40, 5, 32, 32, 3
-bc/phoenix/00/phoenix_0003_5, 10, 59, 59, 7, 44, 50, 5
-bc/phoenix/00/phoenix_0003_5, 12, 75, 76, 8, 47, 50, 6
-bc/phoenix/00/phoenix_0003_5, 13, 78, 78, 12, 75, 76, 6
-bc/phoenix/00/phoenix_0003_5, 14, 85, 88, 10, 59, 59, 5
-bc/phoenix/00/phoenix_0003_5, 15, 87, 88, 13, 78, 78, 6
-bc/phoenix/00/phoenix_0003_5, 16, 98, 98, 9, 49, 49, 4
-bc/phoenix/00/phoenix_0003_5, 17, 101, 101, 14, 85, 88, 5
-bc/phoenix/00/phoenix_0003_5, 18, 103, 103, 17, 101, 101, 5
-bc/phoenix/00/phoenix_0003_5, 19, 119, 119, 16, 98, 98, 4
-bc/phoenix/00/phoenix_0003_5, 20, 121, 121, 18, 103, 103, 5
-bc/phoenix/00/phoenix_0003_5, 21, 130, 130, 20, 121, 121, 5
-bc/phoenix/00/phoenix_0003_5, 22, 135, 135, 21, 130, 130, 5
-bc/phoenix/00/phoenix_0003_5, 23, 140, 140, 22, 135, 135, 5
-bc/phoenix/00/phoenix_0003_5, 24, 146, 146, 23, 140, 140, 5
-bc/phoenix/00/phoenix_0003_5, 25, 166, 166, 24, 146, 146, 5
-bc/phoenix/00/phoenix_0003_5, 26, 177, 177, 25, 166, 166, 5
-bc/phoenix/00/phoenix_0003_5, 27, 177, 178, 11, 59, 60, 7
-bc/phoenix/00/phoenix_0003_5, 28, 185, 185, 26, 177, 177, 5
-bc/phoenix/00/phoenix_0003_5, 29, 185, 186, 27, 177, 178, 7
-bc/phoenix/00/phoenix_0003_5, 30, 198, 198, 28, 185, 185, 5
-bc/phoenix/00/phoenix_0003_5, 31, 202, 202, 29, 185, 186, 7
-bc/phoenix/00/phoenix_0003_5, 32, 204, 204, 30, 198, 198, 5
-bc/phoenix/00/phoenix_0003_5, 33, 211, 211, 32, 204, 204, 5
-bc/phoenix/00/phoenix_0003_5, 34, 211, 212, 31, 202, 202, 7
-bc/phoenix/00/phoenix_0003_5, 36, 259, 259, 35, 244, 257, 8
-bc/phoenix/00/phoenix_0003_5, 37, 267, 267, 36, 259, 259, 8
-bc/phoenix/00/phoenix_0003_5, 39, 279, 279, 38, 276, 276, 9
-bc/phoenix/00/phoenix_0003_5, 40, 284, 284, 39, 279, 279, 9
-bc/phoenix/00/phoenix_0003_5, 42, 287, 287, 40, 284, 284, 9
-bc/phoenix/00/phoenix_0003_5, 43, 290, 290, 41, 284, 285, 10
-bc/phoenix/00/phoenix_0003_5, 45, 297, 297, 42, 287, 287, 9
-bc/phoenix/00/phoenix_0003_5, 46, 302, 302, 45, 297, 297, 9
-bc/phoenix/00/phoenix_0003_5, 47, 314, 314, 44, 294, 294, 11
-bc/phoenix/00/phoenix_0003_5, 49, 328, 328, 48, 317, 321, 12
-bc/phoenix/00/phoenix_0003_5, 51, 337, 337, 49, 328, 328, 12
-bc/phoenix/00/phoenix_0003_5, 52, 342, 342, 47, 314, 314, 11
-bc/phoenix/00/phoenix_0003_5, 53, 345, 345, 51, 337, 337, 12
-bc/phoenix/00/phoenix_0003_5, 54, 364, 364, 53, 345, 345, 12
-bc/phoenix/00/phoenix_0003_5, 55, 390, 390, 54, 364, 364, 12
-bc/phoenix/00/phoenix_0003_5, 56, 400, 400, 55, 390, 390, 12
-bc/phoenix/00/phoenix_0003_5, 57, 412, 412, 56, 400, 400, 12
-bc/phoenix/00/phoenix_0003_5, 58, 412, 413, 50, 328, 329, 13
-bc/phoenix/00/phoenix_0003_5, 59, 420, 420, 52, 342, 342, 11
-bc/phoenix/00/phoenix_0003_5, 60, 429, 429, 57, 412, 412, 12
-bc/phoenix/00/phoenix_0003_5, 61, 435, 435, 60, 429, 429, 12
-bc/phoenix/00/phoenix_0003_5, 62, 435, 436, 58, 412, 413, 13
-bc/phoenix/00/phoenix_0003_5, 63, 445, 445, 61, 435, 435, 12
-bc/phoenix/00/phoenix_0003_5, 64, 459, 459, 63, 445, 445, 12
-bc/phoenix/00/phoenix_0003_5, 65, 466, 466, 64, 459, 459, 12
-bc/phoenix/00/phoenix_0003_5, 66, 473, 474, 62, 435, 436, 13
-bc/phoenix/00/phoenix_0003_5, 67, 493, 493, 65, 466, 466, 12
-bc/phoenix/00/phoenix_0003_5, 68, 497, 497, 67, 493, 493, 12
-bc/phoenix/00/phoenix_0003_5, 69, 497, 498, 66, 473, 474, 13
-bc/phoenix/00/phoenix_0003_5, 70, 500, 500, 68, 497, 497, 12
-bc/phoenix/00/phoenix_0003_5, 71, 504, 504, 70, 500, 500, 12
-bc/phoenix/00/phoenix_0003_5, 72, 507, 507, 69, 497, 498, 13
-bc/phoenix/00/phoenix_0003_5, 74, 519, 519, 73, 513, 514, 14
-bc/phoenix/00/phoenix_0003_5, 75, 522, 522, 74, 519, 519, 14
-bc/phoenix/00/phoenix_0003_5, 77, 528, 528, 76, 526, 526, 15
-bc/phoenix/00/phoenix_0003_5, 79, 531, 531, 77, 528, 528, 15
-bc/phoenix/00/phoenix_0003_5, 80, 534, 534, 78, 528, 529, 16
-bc/phoenix/00/phoenix_0003_5, 81, 537, 537, 79, 531, 531, 15
-bc/phoenix/00/phoenix_0003_5, 82, 541, 541, 80, 534, 534, 16
-bc/phoenix/00/phoenix_0003_5, 83, 543, 543, 81, 537, 537, 15
-bc/phoenix/00/phoenix_0003_5, 84, 545, 545, 82, 541, 541, 16
+doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bc/phoenix/00/phoenix_0003_5,1,10,10,0,4,5,1
+bc/phoenix/00/phoenix_0003_5,3,19,19,2,10,11,2
+bc/phoenix/00/phoenix_0003_5,5,32,32,4,29,30,3
+bc/phoenix/00/phoenix_0003_5,6,40,40,5,32,32,3
+bc/phoenix/00/phoenix_0003_5,10,59,59,7,44,50,5
+bc/phoenix/00/phoenix_0003_5,12,75,76,8,47,50,6
+bc/phoenix/00/phoenix_0003_5,13,78,78,12,75,76,6
+bc/phoenix/00/phoenix_0003_5,14,85,88,10,59,59,5
+bc/phoenix/00/phoenix_0003_5,15,87,88,13,78,78,6
+bc/phoenix/00/phoenix_0003_5,16,98,98,9,49,49,4
+bc/phoenix/00/phoenix_0003_5,17,101,101,14,85,88,5
+bc/phoenix/00/phoenix_0003_5,18,103,103,17,101,101,5
+bc/phoenix/00/phoenix_0003_5,19,119,119,16,98,98,4
+bc/phoenix/00/phoenix_0003_5,20,121,121,18,103,103,5
+bc/phoenix/00/phoenix_0003_5,21,130,130,20,121,121,5
+bc/phoenix/00/phoenix_0003_5,22,135,135,21,130,130,5
+bc/phoenix/00/phoenix_0003_5,23,140,140,22,135,135,5
+bc/phoenix/00/phoenix_0003_5,24,146,146,23,140,140,5
+bc/phoenix/00/phoenix_0003_5,25,166,166,24,146,146,5
+bc/phoenix/00/phoenix_0003_5,26,177,177,25,166,166,5
+bc/phoenix/00/phoenix_0003_5,27,177,178,11,59,60,7
+bc/phoenix/00/phoenix_0003_5,28,185,185,26,177,177,5
+bc/phoenix/00/phoenix_0003_5,29,185,186,27,177,178,7
+bc/phoenix/00/phoenix_0003_5,30,198,198,28,185,185,5
+bc/phoenix/00/phoenix_0003_5,31,202,202,29,185,186,7
+bc/phoenix/00/phoenix_0003_5,32,204,204,30,198,198,5
+bc/phoenix/00/phoenix_0003_5,33,211,211,32,204,204,5
+bc/phoenix/00/phoenix_0003_5,34,211,212,31,202,202,7
+bc/phoenix/00/phoenix_0003_5,36,259,259,35,244,257,8
+bc/phoenix/00/phoenix_0003_5,37,267,267,36,259,259,8
+bc/phoenix/00/phoenix_0003_5,39,279,279,38,276,276,9
+bc/phoenix/00/phoenix_0003_5,40,284,284,39,279,279,9
+bc/phoenix/00/phoenix_0003_5,42,287,287,40,284,284,9
+bc/phoenix/00/phoenix_0003_5,43,290,290,41,284,285,10
+bc/phoenix/00/phoenix_0003_5,45,297,297,42,287,287,9
+bc/phoenix/00/phoenix_0003_5,46,302,302,45,297,297,9
+bc/phoenix/00/phoenix_0003_5,47,314,314,44,294,294,11
+bc/phoenix/00/phoenix_0003_5,49,328,328,48,317,321,12
+bc/phoenix/00/phoenix_0003_5,51,337,337,49,328,328,12
+bc/phoenix/00/phoenix_0003_5,52,342,342,47,314,314,11
+bc/phoenix/00/phoenix_0003_5,53,345,345,51,337,337,12
+bc/phoenix/00/phoenix_0003_5,54,364,364,53,345,345,12
+bc/phoenix/00/phoenix_0003_5,55,390,390,54,364,364,12
+bc/phoenix/00/phoenix_0003_5,56,400,400,55,390,390,12
+bc/phoenix/00/phoenix_0003_5,57,412,412,56,400,400,12
+bc/phoenix/00/phoenix_0003_5,58,412,413,50,328,329,13
+bc/phoenix/00/phoenix_0003_5,59,420,420,52,342,342,11
+bc/phoenix/00/phoenix_0003_5,60,429,429,57,412,412,12
+bc/phoenix/00/phoenix_0003_5,61,435,435,60,429,429,12
+bc/phoenix/00/phoenix_0003_5,62,435,436,58,412,413,13
+bc/phoenix/00/phoenix_0003_5,63,445,445,61,435,435,12
+bc/phoenix/00/phoenix_0003_5,64,459,459,63,445,445,12
+bc/phoenix/00/phoenix_0003_5,65,466,466,64,459,459,12
+bc/phoenix/00/phoenix_0003_5,66,473,474,62,435,436,13
+bc/phoenix/00/phoenix_0003_5,67,493,493,65,466,466,12
+bc/phoenix/00/phoenix_0003_5,68,497,497,67,493,493,12
+bc/phoenix/00/phoenix_0003_5,69,497,498,66,473,474,13
+bc/phoenix/00/phoenix_0003_5,70,500,500,68,497,497,12
+bc/phoenix/00/phoenix_0003_5,71,504,504,70,500,500,12
+bc/phoenix/00/phoenix_0003_5,72,507,507,69,497,498,13
+bc/phoenix/00/phoenix_0003_5,74,519,519,73,513,514,14
+bc/phoenix/00/phoenix_0003_5,75,522,522,74,519,519,14
+bc/phoenix/00/phoenix_0003_5,77,528,528,76,526,526,15
+bc/phoenix/00/phoenix_0003_5,79,531,531,77,528,528,15
+bc/phoenix/00/phoenix_0003_5,80,534,534,78,528,529,16
+bc/phoenix/00/phoenix_0003_5,81,537,537,79,531,531,15
+bc/phoenix/00/phoenix_0003_5,82,541,541,80,534,534,16
+bc/phoenix/00/phoenix_0003_5,83,543,543,81,537,537,15
+bc/phoenix/00/phoenix_0003_5,84,545,545,82,541,541,16

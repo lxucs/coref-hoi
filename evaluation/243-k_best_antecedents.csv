@@ -1,5 +1,5 @@
-doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end
-nw/wsj/23/wsj_2389_0, 23, 49, 51, 1, 16.75210952758789, 7, 18, 18
-nw/wsj/23/wsj_2389_0, 27, 62, 75, 1, 35.9239387512207, 5, 10, 16
-nw/wsj/23/wsj_2389_0, 30, 74, 74, 1, 24.37189292907715, 6, 13, 13
-nw/wsj/23/wsj_2389_0, 30, 74, 74, 2, 10.373834609985352, 4, 10, 13
+doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end
+nw/wsj/23/wsj_2389_0,23,49,51,1,16.75210952758789,7,18,18
+nw/wsj/23/wsj_2389_0,27,62,75,1,35.9239387512207,5,10,16
+nw/wsj/23/wsj_2389_0,30,74,74,1,24.37189292907715,6,13,13
+nw/wsj/23/wsj_2389_0,30,74,74,2,10.373834609985352,4,10,13

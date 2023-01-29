@@ -159,7 +159,7 @@ class Runner:
         k_best_antecedent logging for the document n° *doc_key* into evaluation/{doc_key}-k_best_antecedents.csv with comma separator
         """
         with open(f"evaluation/{doc_number}-k_best_antecedents.csv", "w") as file:
-            file.write("doc_key, span_idx, span_start, span_end, antecedent_rank, antecedent_score, antecedent_idx, antecedent_start, antecedent_end\n")
+            file.write("doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end\n")
             assert len(span_starts) == k_best_antecedent_idx.shape[0]
             nb_spans = len(span_starts)
             k = k_best_antecedent_idx.shape[1]
@@ -168,14 +168,14 @@ class Runner:
                     antecedent_idx = k_best_antecedent_idx[span_idx, rank]
                     antecedent_score = k_best_antecedent_scores[span_idx, rank]
                     if antecedent_score > 0: # else, dummy antecedent : so do not log
-                        file.write(f"{doc_key}, {span_idx}, {span_starts[span_idx]}, {span_ends[span_idx]}, {rank+1}, {antecedent_score}, {antecedent_idx}, {span_starts[antecedent_idx]}, {span_ends[antecedent_idx]}\n")
+                        file.write(f"{doc_key},{span_idx},{span_starts[span_idx]},{span_ends[span_idx]},{rank+1},{antecedent_score},{antecedent_idx},{span_starts[antecedent_idx]},{span_ends[antecedent_idx]}\n")
 
     def gold_antecedents_logging(self, doc_number, doc_key, tensor_example_gold):
         """
         gold antecedents logging for the document n° *doc_key* into evaluation/{doc_key}-gold_antecedents.csv with comma separator
         """
         with open(f"evaluation/{doc_number}-gold_antecedents.csv", "w") as file:
-            file.write("doc_key, anaphor_idx, anaphor_start, anaphor_end, antecedent_idx, antecedent_start, antecedent_end, cluster_id\n")
+            file.write("doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id\n")
             (gold_starts, gold_ends, gold_mention_cluster_map) = tensor_example_gold
             nb_spans = gold_starts.shape[0]
             seen_cluster_ids = []
@@ -185,7 +185,7 @@ class Runner:
                     seen_cluster_ids.append(cluster_id)
                 else: # anaphor
                     antecedent_idx = (gold_mention_cluster_map[:span_idx] == cluster_id).nonzero(as_tuple=True)[0][-1].item() # gives the index of the last previous mention that belongs to the same cluster (i.e. the antecedent)
-                    file.write(f"{doc_key}, {span_idx}, {gold_starts[span_idx]}, {gold_ends[span_idx]}, {antecedent_idx}, {gold_starts[antecedent_idx]}, {gold_ends[antecedent_idx]}, {cluster_id}\n")
+                    file.write(f"{doc_key},{span_idx},{gold_starts[span_idx]},{gold_ends[span_idx]},{antecedent_idx},{gold_starts[antecedent_idx]},{gold_ends[antecedent_idx]},{cluster_id}\n")
 
     def evaluate(self, model, tensor_examples, stored_info, step, official=False, conll_path=None, tb_writer=None):
         logger.info('Step %d: evaluating on %d samples...' % (step, len(tensor_examples)))
