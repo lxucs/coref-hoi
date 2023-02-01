@@ -1,4 +1,0 @@
-doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end
-bn/voa/02/voa_0249_0,7,18,18,1,65.94062042236328,3,5,10
-bn/voa/02/voa_0249_0,9,21,23,1,84.00558471679688,3,5,10
-bn/voa/02/voa_0249_0,9,21,23,2,29.62038803100586,7,18,18

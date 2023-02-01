@@ -1,4 +1,0 @@
-doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end
-bn/cnn/02/cnn_0269_0,6,17,18,1,56.188499450683594,3,6,7
-bn/cnn/02/cnn_0269_0,17,52,52,1,72.79660034179688,11,34,35
-bn/cnn/02/cnn_0269_0,41,98,100,1,8.124671936035156,30,77,78

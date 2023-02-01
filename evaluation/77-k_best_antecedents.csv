@@ -1,7 +1,0 @@
-doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end
-bn/cnn/01/cnn_0159_0,13,30,31,1,10.679340362548828,4,8,8
-bn/cnn/01/cnn_0159_0,16,38,38,1,28.106266021728516,11,22,24
-bn/cnn/01/cnn_0159_0,24,63,64,1,27.273303985595703,13,30,31
-bn/cnn/01/cnn_0159_0,24,63,64,2,23.822622299194336,4,8,8
-bn/cnn/01/cnn_0159_0,26,67,67,1,39.074668884277344,18,48,56
-bn/cnn/01/cnn_0159_0,47,122,122,1,73.80814361572266,40,107,108

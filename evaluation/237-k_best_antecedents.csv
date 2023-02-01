@@ -1,4 +1,0 @@
-doc_key,span_idx,span_start,span_end,antecedent_rank,antecedent_score,antecedent_idx,antecedent_start,antecedent_end
-nw/wsj/23/wsj_2380_0,50,113,117,1,0.7611899375915527,48,111,117
-nw/wsj/23/wsj_2380_0,262,626,629,1,2.292879581451416,218,529,532
-nw/wsj/23/wsj_2380_0,417,1001,1008,1,7.430302143096924,393,907,914
