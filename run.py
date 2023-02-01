@@ -167,8 +167,8 @@ class Runner:
                 for rank in range(k):
                     antecedent_idx = k_best_antecedent_idx[span_idx, rank]
                     antecedent_score = k_best_antecedent_scores[span_idx, rank]
-                    if antecedent_score > 0: # else, dummy antecedent : so do not log
-                        file.write(f"{doc_key},{span_idx},{span_starts[span_idx]},{span_ends[span_idx]},{rank+1},{antecedent_score},{antecedent_idx},{span_starts[antecedent_idx]},{span_ends[antecedent_idx]}\n")
+                    #if antecedent_score > 0: # else, dummy antecedent : so do not log
+                    file.write(f"{doc_key},{span_idx},{span_starts[span_idx]},{span_ends[span_idx]},{rank+1},{antecedent_score},{antecedent_idx},{span_starts[antecedent_idx]},{span_ends[antecedent_idx]}\n")
 
     def gold_antecedents_logging(self, doc_number, doc_key, tensor_example_gold):
         """
@@ -197,36 +197,38 @@ class Runner:
         for i, (doc_key, tensor_example) in enumerate(tensor_examples):
             gold_clusters = stored_info['gold'][doc_key]
             tensor_example_gold = tensor_example[7:]
-            # tensor_example = tensor_example[:7]  # Strip out gold
-            # example_gpu = [d.to(self.device) for d in tensor_example]
-            # with torch.no_grad():
-            #     _, _, _, span_starts, span_ends, antecedent_idx, antecedent_scores = model(*example_gpu)
-            # span_starts, span_ends = span_starts.tolist(), span_ends.tolist()
-            # antecedent_idx, antecedent_scores = antecedent_idx.tolist(), antecedent_scores.tolist()
+            tensor_example = tensor_example[:7]  # Strip out gold
+            example_gpu = [d.to(self.device) for d in tensor_example]
+            with torch.no_grad():
+                _, _, _, span_starts, span_ends, antecedent_idx, antecedent_scores = model(*example_gpu)
+            span_starts, span_ends = span_starts.tolist(), span_ends.tolist()
+            antecedent_idx, antecedent_scores = antecedent_idx.tolist(), antecedent_scores.tolist()
 
             ## uncomment the following lines to log k best antecedents for each span of each test document
-            # k_best_antecedent_idx, k_best_antecedent_scores = CorefModel.get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, k=5)
+            # k_best_antecedent_idx, k_best_antecedent_scores = CorefModel.get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, k=50)
             # self.k_best_antecedents_logging(i, doc_key, span_starts, span_ends, k_best_antecedent_idx, k_best_antecedent_scores)
-            
+            # nb_examples = len(tensor_examples)
+            # logger.info(f"k_best_antecedents_logging ... {i+1}/{nb_examples}")
+
             ## uncomment the following line to log the gold anaphor-antecedent pairs
-            self.gold_antecedents_logging(i, doc_key, tensor_example_gold)
+            #self.gold_antecedents_logging(i, doc_key, tensor_example_gold)
 
-            # predicted_clusters = model.update_evaluator(span_starts, span_ends, antecedent_idx, antecedent_scores, gold_clusters, evaluator)
-            # doc_to_prediction[doc_key] = predicted_clusters
+            predicted_clusters = model.update_evaluator(span_starts, span_ends, antecedent_idx, antecedent_scores, gold_clusters, evaluator)
+            doc_to_prediction[doc_key] = predicted_clusters
 
-        # p, r, f = evaluator.get_prf()
-        # metrics = {'Eval_Avg_Precision': p * 100, 'Eval_Avg_Recall': r * 100, 'Eval_Avg_F1': f * 100}
-        # for name, score in metrics.items():
-        #     logger.info('%s: %.2f' % (name, score))
-        #     if tb_writer:
-        #         tb_writer.add_scalar(name, score, step)
+        p, r, f = evaluator.get_prf()
+        metrics = {'Eval_Avg_Precision': p * 100, 'Eval_Avg_Recall': r * 100, 'Eval_Avg_F1': f * 100}
+        for name, score in metrics.items():
+            logger.info('%s: %.2f' % (name, score))
+            if tb_writer:
+                tb_writer.add_scalar(name, score, step)
 
-        # if official:
-        #     conll_results = conll.evaluate_conll(conll_path, doc_to_prediction, stored_info['subtoken_maps'])
-        #     official_f1 = sum(results["f"] for results in conll_results.values()) / len(conll_results)
-        #     logger.info('Official avg F1: %.4f' % official_f1)
+        if official:
+            conll_results = conll.evaluate_conll(conll_path, doc_to_prediction, stored_info['subtoken_maps'])
+            official_f1 = sum(results["f"] for results in conll_results.values()) / len(conll_results)
+            logger.info('Official avg F1: %.4f' % official_f1)
 
-        # return f * 100, metrics
+        return f * 100, metrics
 
     def predict(self, model, tensor_examples):
         logger.info('Predicting %d samples...' % len(tensor_examples))

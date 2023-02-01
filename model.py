@@ -389,7 +389,7 @@ class CorefModel(nn.Module):
         """
         num_spans = len(antecedent_idx)
         num_antecedents_per_span = len(antecedent_idx[0])
-        assert k <= num_antecedents_per_span
+        k = min(k, num_antecedents_per_span)
         k_best_antecedent_idx = torch.zeros(num_spans, k, dtype=torch.long)
         k_best_antecedent_scores = torch.from_numpy(np.flip(np.sort(antecedent_scores, axis=1), axis=1).copy()[:,:k]) # sort in descending order then take the k first (so the k best)
         topk_indices = np.flip(np.argsort(antecedent_scores, axis=1), axis=1)[:,:k] 
