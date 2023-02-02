@@ -205,13 +205,15 @@ class Runner:
             antecedent_idx, antecedent_scores = antecedent_idx.tolist(), antecedent_scores.tolist()
 
             ## uncomment the following lines to log k best antecedents for each span of each test document
-            k_best_antecedent_idx, k_best_antecedent_scores = CorefModel.get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, k=50)
-            self.k_best_antecedents_logging(i, doc_key, span_starts, span_ends, k_best_antecedent_idx, k_best_antecedent_scores)
-            nb_examples = len(tensor_examples)
-            logger.info(f"k_best_antecedents_logging ... {i+1}/{nb_examples}")
+            # k_best_antecedent_idx, k_best_antecedent_scores = CorefModel.get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, k=50)
+            # self.k_best_antecedents_logging(i, doc_key, span_starts, span_ends, k_best_antecedent_idx, k_best_antecedent_scores)
+            # nb_examples = len(tensor_examples)
+            # logger.info(f"k_best_antecedents_logging ... {i+1}/{nb_examples}")
 
             ## uncomment the following line to log the gold anaphor-antecedent pairs
-            #self.gold_antecedents_logging(i, doc_key, tensor_example_gold)
+            self.gold_antecedents_logging(i, doc_key, tensor_example_gold)
+            nb_examples = len(tensor_examples)
+            logger.info(f"gold_antecedents_logging ... {i+1}/{nb_examples}")
 
         #     predicted_clusters = model.update_evaluator(span_starts, span_ends, antecedent_idx, antecedent_scores, gold_clusters, evaluator)
         #     doc_to_prediction[doc_key] = predicted_clusters
