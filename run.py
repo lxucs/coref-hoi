@@ -205,30 +205,30 @@ class Runner:
             antecedent_idx, antecedent_scores = antecedent_idx.tolist(), antecedent_scores.tolist()
 
             ## uncomment the following lines to log k best antecedents for each span of each test document
-            # k_best_antecedent_idx, k_best_antecedent_scores = CorefModel.get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, k=50)
-            # self.k_best_antecedents_logging(i, doc_key, span_starts, span_ends, k_best_antecedent_idx, k_best_antecedent_scores)
-            # nb_examples = len(tensor_examples)
-            # logger.info(f"k_best_antecedents_logging ... {i+1}/{nb_examples}")
+            k_best_antecedent_idx, k_best_antecedent_scores = CorefModel.get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, k=50)
+            self.k_best_antecedents_logging(i, doc_key, span_starts, span_ends, k_best_antecedent_idx, k_best_antecedent_scores)
+            nb_examples = len(tensor_examples)
+            logger.info(f"k_best_antecedents_logging ... {i+1}/{nb_examples}")
 
             ## uncomment the following line to log the gold anaphor-antecedent pairs
             #self.gold_antecedents_logging(i, doc_key, tensor_example_gold)
 
-            predicted_clusters = model.update_evaluator(span_starts, span_ends, antecedent_idx, antecedent_scores, gold_clusters, evaluator)
-            doc_to_prediction[doc_key] = predicted_clusters
+        #     predicted_clusters = model.update_evaluator(span_starts, span_ends, antecedent_idx, antecedent_scores, gold_clusters, evaluator)
+        #     doc_to_prediction[doc_key] = predicted_clusters
 
-        p, r, f = evaluator.get_prf()
-        metrics = {'Eval_Avg_Precision': p * 100, 'Eval_Avg_Recall': r * 100, 'Eval_Avg_F1': f * 100}
-        for name, score in metrics.items():
-            logger.info('%s: %.2f' % (name, score))
-            if tb_writer:
-                tb_writer.add_scalar(name, score, step)
+        # p, r, f = evaluator.get_prf()
+        # metrics = {'Eval_Avg_Precision': p * 100, 'Eval_Avg_Recall': r * 100, 'Eval_Avg_F1': f * 100}
+        # for name, score in metrics.items():
+        #     logger.info('%s: %.2f' % (name, score))
+        #     if tb_writer:
+        #         tb_writer.add_scalar(name, score, step)
 
-        if official:
-            conll_results = conll.evaluate_conll(conll_path, doc_to_prediction, stored_info['subtoken_maps'])
-            official_f1 = sum(results["f"] for results in conll_results.values()) / len(conll_results)
-            logger.info('Official avg F1: %.4f' % official_f1)
+        # if official:
+        #     conll_results = conll.evaluate_conll(conll_path, doc_to_prediction, stored_info['subtoken_maps'])
+        #     official_f1 = sum(results["f"] for results in conll_results.values()) / len(conll_results)
+        #     logger.info('Official avg F1: %.4f' % official_f1)
 
-        return f * 100, metrics
+        # return f * 100, metrics
 
     def predict(self, model, tensor_examples):
         logger.info('Predicting %d samples...' % len(tensor_examples))
