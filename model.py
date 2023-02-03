@@ -115,7 +115,7 @@ class CorefModel(nn.Module):
         if gold_mention_cluster_map is not None:
             assert gold_starts is not None
             assert gold_ends is not None
-            do_loss = True
+            # do_loss = True
 
         # Get token emb
         mention_doc, _ = self.bert(input_ids, attention_mask=input_mask)  # [num seg, num max tokens, emb size]
@@ -126,13 +126,20 @@ class CorefModel(nn.Module):
 
         # Get candidate span
         sentence_indices = sentence_map  # [num tokens]
-        candidate_starts = torch.unsqueeze(torch.arange(0, num_words, device=device), 1).repeat(1, self.max_span_width)
-        candidate_ends = candidate_starts + torch.arange(0, self.max_span_width, device=device)
-        candidate_start_sent_idx = sentence_indices[candidate_starts]
-        candidate_end_sent_idx = sentence_indices[torch.min(candidate_ends, torch.tensor(num_words - 1, device=device))]
-        candidate_mask = (candidate_ends < num_words) & (candidate_start_sent_idx == candidate_end_sent_idx)
-        candidate_starts, candidate_ends = candidate_starts[candidate_mask], candidate_ends[candidate_mask]  # [num valid candidates]
+        
+        # candidate_starts = torch.unsqueeze(torch.arange(0, num_words, device=device), 1).repeat(1, self.max_span_width)
+        # candidate_ends = candidate_starts + torch.arange(0, self.max_span_width, device=device)
+        
+        candidate_starts, candidate_ends = gold_starts, gold_ends # line used to replace predicted boundaries by gold (true) boundaries, used for example to log the k best antecedents assuming that the boundaries are perfect
+
+        # candidate_start_sent_idx = sentence_indices[candidate_starts]
+        # candidate_end_sent_idx = sentence_indices[torch.min(candidate_ends, torch.tensor(num_words - 1, device=device))]
+        # candidate_mask = (candidate_ends < num_words) & (candidate_start_sent_idx == candidate_end_sent_idx)
+        # candidate_starts, candidate_ends = candidate_starts[candidate_mask], candidate_ends[candidate_mask]  # [num valid candidates]
         num_candidates = candidate_starts.shape[0]
+        if num_candidates == 0: # no candidate, possible with gold boundaries, ex : document #26
+            return None
+
 
         # Get candidate labels
         if do_loss:
@@ -147,6 +154,10 @@ class CorefModel(nn.Module):
         candidate_emb_list = [span_start_emb, span_end_emb]
         if conf['use_features']:
             candidate_width_idx = candidate_ends - candidate_starts
+            max_width_idx = torch.full(candidate_starts.shape, self.max_span_width-1, dtype=torch.long)
+            combined = torch.cat((torch.unsqueeze(max_width_idx, 0), torch.unsqueeze(candidate_width_idx, 0)), dim=0)
+            candidate_width_idx = torch.min(combined, dim=0)[0]
+            
             candidate_width_emb = self.emb_span_width(candidate_width_idx)
             candidate_width_emb = self.dropout(candidate_width_emb)
             candidate_emb_list.append(candidate_width_emb)
@@ -387,6 +398,9 @@ class CorefModel(nn.Module):
             - integer *k* <= number of antecedents per span
         Output : 2 tensors *k_best_antecedent_idx*, *k_best_antecedent_scores* of shape (num_spans, k)
         """
+        if antecedent_idx == []:
+            return torch.Tensor([]), torch.Tensor([])
+
         num_spans = len(antecedent_idx)
         num_antecedents_per_span = len(antecedent_idx[0])
         k = min(k, num_antecedents_per_span)
