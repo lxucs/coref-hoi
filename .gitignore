@@ -8,3 +8,4 @@ ontonotes-release-5.0
 .vscode
 __pycache__
 evaluation/*-k_best_ant*.csv
+test_csv.py
