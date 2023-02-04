@@ -115,7 +115,7 @@ class CorefModel(nn.Module):
         if gold_mention_cluster_map is not None:
             assert gold_starts is not None
             assert gold_ends is not None
-            # do_loss = True
+            do_loss = True
 
         # Get token emb
         mention_doc, _ = self.bert(input_ids, attention_mask=input_mask)  # [num seg, num max tokens, emb size]
