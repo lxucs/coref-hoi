@@ -452,3 +452,44 @@ class CorefModel(nn.Module):
         mention_to_gold = {m: cluster for cluster in gold_clusters for m in cluster}
         evaluator.update(predicted_clusters, gold_clusters, mention_to_predicted, mention_to_gold)
         return predicted_clusters
+
+    ## Functions v2 for evaluation from csv files 
+
+    def get_predicted_clusters_v2(self, span_starts, span_ends, predicted_antecedents):
+        """
+        Version 2 of get_predicted_clusters above, the only difference is that it takes directly the list (*predicted_antecedent*) of the antecedent to choose for each span (-1 if no antecedent)
+        Used for the evaluation from csv files
+        """
+        # Get predicted clusters
+        mention_to_cluster_id = {}
+        predicted_clusters = []
+        for i, predicted_idx in enumerate(predicted_antecedents):
+            if predicted_idx < 0:
+                continue
+            assert i > predicted_idx, f'span idx: {i}; antecedent idx: {predicted_idx}'
+            # Check antecedent's cluster
+            antecedent = (int(span_starts[predicted_idx]), int(span_ends[predicted_idx]))
+            antecedent_cluster_id = mention_to_cluster_id.get(antecedent, -1)
+            if antecedent_cluster_id == -1:
+                antecedent_cluster_id = len(predicted_clusters)
+                predicted_clusters.append([antecedent])
+                mention_to_cluster_id[antecedent] = antecedent_cluster_id
+            # Add mention to cluster
+            mention = (int(span_starts[i]), int(span_ends[i]))
+            predicted_clusters[antecedent_cluster_id].append(mention)
+            mention_to_cluster_id[mention] = antecedent_cluster_id
+
+        predicted_clusters = [tuple(c) for c in predicted_clusters]
+        return predicted_clusters, mention_to_cluster_id, predicted_antecedents
+    
+    def update_evaluator_v2(self, span_starts, span_ends, predicted_antecedent_idx, gold_clusters, evaluator):
+        """
+        Version 2 of update_evaluator above, the only difference is that it takes directly the list (*predicted_antecedent_idx*) of the antecedent to choose for each span (-1 if no antecedent)
+        Used for the evaluation from csv files
+        """
+        predicted_clusters, mention_to_cluster_id, _ = self.get_predicted_clusters_v2(span_starts, span_ends, predicted_antecedent_idx)
+        mention_to_predicted = {m: predicted_clusters[cluster_idx] for m, cluster_idx in mention_to_cluster_id.items()}
+        gold_clusters = [tuple(tuple(m) for m in cluster) for cluster in gold_clusters]
+        mention_to_gold = {m: cluster for cluster in gold_clusters for m in cluster}
+        evaluator.update(predicted_clusters, gold_clusters, mention_to_predicted, mention_to_gold)
+        return predicted_clusters

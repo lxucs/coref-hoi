@@ -245,7 +245,7 @@ class Runner:
         pred_filename = "k_best_ant_gold_bound" if gold_boundaries else "k_best_antecedents"
 
         model.eval()
-        for k in range(1, self.config["max_top_antecedents"] + 1):
+        for k in range(1, 2):#self.config["max_top_antecedents"] + 1):
             for i, (doc_key, tensor_example) in enumerate(tensor_examples):
                 gold_clusters = stored_info['gold'][doc_key]
 
@@ -257,32 +257,32 @@ class Runner:
                 span_starts, span_ends, predicted_antecedent_idx = [], [], []
                 visited_idx = []
                 for pred_row in pred_reader:
-                    idx = pred_row["span_idx"]
+                    idx = int(pred_row["span_idx"])
                     if idx not in visited_idx:
                     # new span, this row is the top 1 antecedent's
                         visited_idx.append(idx)
-                        predicted_antecedent_idx.append(pred_row["antecedent_idx"]) # predict the top 1 by default, will be corrected later if the gold is found
-                        pred_start = pred_row["span_start"]
-                        pred_end = pred_row["span_end"]
+                        predicted_antecedent_idx.append(int(pred_row["antecedent_idx"])) # predict the top 1 by default, will be corrected later if the gold is found
+                        pred_start = int(pred_row["span_start"])
+                        pred_end = int(pred_row["span_end"])
                         span_starts.append(pred_start)
                         span_ends.append(pred_end)
                         gold_antecedent_start = None
                         gold_antecedent_end = None
                         for gold_row in gold_reader:
-                            gold_start = gold_row["anaphor_start"]
-                            gold_end = gold_row["anaphor_end"]
+                            gold_start = int(gold_row["anaphor_start"])
+                            gold_end = int(gold_row["anaphor_end"])
                             if (pred_start, pred_end) == (gold_start, gold_end):
-                                gold_antecedent_start = gold_row["antecedent_start"]
-                                gold_antecedent_end = gold_row["antecedent_end"]
+                                gold_antecedent_start = int(gold_row["antecedent_start"])
+                                gold_antecedent_end = int(gold_row["antecedent_end"])
                                 break
                     
                     if float(pred_row["antecedent_score"]) < 0 or int(pred_row["antecedent_rank"]) > k:
                         continue
                     
-                    pred_antecedent_start = pred_row["antecedent_start"]
-                    pred_antecedent_end = pred_row["antecedent_end"]
+                    pred_antecedent_start = int(pred_row["antecedent_start"])
+                    pred_antecedent_end = int(pred_row["antecedent_end"])
                     if (pred_start, pred_end, pred_antecedent_start, pred_antecedent_end) == (gold_start, gold_end, gold_antecedent_start, gold_antecedent_end):
-                        predicted_antecedent_idx[-1] = pred_row["antecedent_idx"] # if gold is found, we correct the current predicted antecedent
+                        predicted_antecedent_idx[-1] = int(pred_row["antecedent_idx"]) # if gold is found, we correct the current predicted antecedent
 
                 predicted_clusters = model.update_evaluator_v2(span_starts, span_ends, predicted_antecedent_idx, gold_clusters, evaluator)
                 doc_to_prediction[doc_key] = predicted_clusters
