@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 BEGIN_DOCUMENT_REGEX = re.compile(r"#begin document \((.*)\); part (\d+)")  # First line at each document
 COREF_RESULTS_REGEX = re.compile(r".*Coreference: Recall: \([0-9.]+ / [0-9.]+\) ([0-9.]+)%\tPrecision: \([0-9.]+ / [0-9.]+\) ([0-9.]+)%\tF1: ([0-9.]+)%.*", re.DOTALL)
+MD_RESULTS_REGEX = re.compile(r".*Identification of Mentions: Recall: \([0-9.]+ / [0-9.]+\) ([0-9.]+)%\tPrecision: \([0-9.]+ / [0-9.]+\) ([0-9.]+)%\tF1: ([0-9.]+)%.*", re.DOTALL)
 
 
 def get_doc_key(doc_id, part):
@@ -89,7 +90,13 @@ def official_conll_eval(gold_path, predicted_path, metric, official_stdout=True)
     recall = float(coref_results_match.group(1))
     precision = float(coref_results_match.group(2))
     f1 = float(coref_results_match.group(3))
-    return {"r": recall, "p": precision, "f": f1}
+
+    md_results_match = re.match(MD_RESULTS_REGEX, stdout)
+    md_recall = float(md_results_match.group(1))
+    md_precision = float(md_results_match.group(2))
+    md_f1 = float(md_results_match.group(3))
+
+    return {"r": recall, "p": precision, "f": f1, "md_r": md_recall, "md_p": md_precision, "md_f": md_f1}
 
 
 def evaluate_conll(gold_path, predictions, subtoken_maps, official_stdout=True):

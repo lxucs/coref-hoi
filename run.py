@@ -250,7 +250,7 @@ class Runner:
             metric_file_suffix = "pred_boundaries"
 
         metric_file = open(f"evaluation/k-metrics-{metric_file_suffix}.csv", "w")
-        metric_file.write("k,eval_avg_p,eval_avg_r,eval_avg_f,conll_muc_p,conll_muc_r,conll_muc_f,conll_bcub_p,conll_bcub_r,conll_bcub_f,conll_ceafe_p,conll_ceafe_r,conll_ceafe_f,conll_avg_f\n")
+        metric_file.write("k,eval_avg_p,eval_avg_r,eval_avg_f,conll_md_p,conll_md_r,conll_md_f,conll_muc_p,conll_muc_r,conll_muc_f,conll_bcub_p,conll_bcub_r,conll_bcub_f,conll_ceafe_p,conll_ceafe_r,conll_ceafe_f,conll_avg_f\n")
         nb_ranks = self.config["max_top_antecedents"]
         model.eval()
         for k in range(1, nb_ranks + 1):
@@ -306,7 +306,7 @@ class Runner:
                 conll_results = conll.evaluate_conll(conll_path, doc_to_prediction, stored_info['subtoken_maps'], official_stdout=False)
                 official_f1 = sum(results["f"] for results in conll_results.values()) / len(conll_results)
                 #logger.info('Official avg F1: %.4f' % official_f1)
-            metric_file.write(f"{k},{p*100:.2f},{r*100:.2f},{f*100:.2f},{conll_results['muc']['p']},{conll_results['muc']['r']},{conll_results['muc']['f']},{conll_results['bcub']['p']},{conll_results['bcub']['r']},{conll_results['bcub']['f']},{conll_results['ceafe']['p']},{conll_results['ceafe']['r']},{conll_results['ceafe']['f']},{official_f1:.4f}\n")
+            metric_file.write(f"{k},{p*100:.2f},{r*100:.2f},{f*100:.2f},{conll_results['muc']['md_p']},{conll_results['muc']['md_r']},{conll_results['muc']['md_f']},{conll_results['muc']['p']},{conll_results['muc']['r']},{conll_results['muc']['f']},{conll_results['bcub']['p']},{conll_results['bcub']['r']},{conll_results['bcub']['f']},{conll_results['ceafe']['p']},{conll_results['ceafe']['r']},{conll_results['ceafe']['f']},{official_f1:.4f}\n")
             logger.info(f"evaluation from csv file - rank {k}/{nb_ranks}")
 
         metric_file.close()
