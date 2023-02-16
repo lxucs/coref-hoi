@@ -22,6 +22,8 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s
                     level=logging.INFO)
 logger = logging.getLogger()
 
+MAX_NB_ANTECEDENTS = 262 # the max number of antecedents for the test documents
+
 
 class Runner:
     def __init__(self, config_name, gpu_id=0, seed=None):
@@ -198,7 +200,7 @@ class Runner:
         for i, (doc_key, tensor_example) in enumerate(tensor_examples):
             gold_clusters = stored_info['gold'][doc_key]
             tensor_example_gold = tensor_example[7:]
-            tensor_example = tensor_example[:7]  # Strip out gold
+            # tensor_example = tensor_example[:7]  # Strip out gold
             example_gpu = [d.to(self.device) for d in tensor_example]
             with torch.no_grad():
                 output = model(*example_gpu)
@@ -209,34 +211,34 @@ class Runner:
                     span_starts, span_ends = span_starts.tolist(), span_ends.tolist()
                     antecedent_idx, antecedent_scores = antecedent_idx.tolist(), antecedent_scores.tolist()
 
-        logger.info(f"max_num_candidates : {max_num_candidates} for document no. {imax}")
+        # logger.info(f"max_num_candidates : {max_num_candidates} for document no. {imax}")
             ## uncomment the following lines to log k best antecedents for each span of each test document
-            # k_best_antecedent_idx, k_best_antecedent_scores = CorefModel.get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, k=50)
-            # self.k_best_antecedents_logging(i, doc_key, span_starts, span_ends, k_best_antecedent_idx, k_best_antecedent_scores)
-            # nb_examples = len(tensor_examples)
-            # logger.info(f"k best ant. (gold boundaries) logging ... {i+1}/{nb_examples}")
+            k_best_antecedent_idx, k_best_antecedent_scores = CorefModel.get_k_best_predicted_antecedents(antecedent_idx, antecedent_scores, k=MAX_NB_ANTECEDENTS)
+            self.k_best_antecedents_logging(i, doc_key, span_starts, span_ends, k_best_antecedent_idx, k_best_antecedent_scores)
+            nb_examples = len(tensor_examples)
+            logger.info(f"k best ant. (gold boundaries) logging ... {i+1}/{nb_examples}")
             
             ## uncomment the following line to log the gold anaphor-antecedent pairs
             # self.gold_antecedents_logging(i, doc_key, tensor_example_gold)
             # nb_examples = len(tensor_examples)
             # logger.info(f"gold_antecedents_logging ... {i+1}/{nb_examples}")
 
-            predicted_clusters = model.update_evaluator(span_starts, span_ends, antecedent_idx, antecedent_scores, gold_clusters, evaluator)
-            doc_to_prediction[doc_key] = predicted_clusters
+        #     predicted_clusters = model.update_evaluator(span_starts, span_ends, antecedent_idx, antecedent_scores, gold_clusters, evaluator)
+        #     doc_to_prediction[doc_key] = predicted_clusters
 
-        p, r, f = evaluator.get_prf()
-        metrics = {'Eval_Avg_Precision': p * 100, 'Eval_Avg_Recall': r * 100, 'Eval_Avg_F1': f * 100}
-        for name, score in metrics.items():
-            logger.info('%s: %.2f' % (name, score))
-            if tb_writer:
-                tb_writer.add_scalar(name, score, step)
+        # p, r, f = evaluator.get_prf()
+        # metrics = {'Eval_Avg_Precision': p * 100, 'Eval_Avg_Recall': r * 100, 'Eval_Avg_F1': f * 100}
+        # for name, score in metrics.items():
+        #     logger.info('%s: %.2f' % (name, score))
+        #     if tb_writer:
+        #         tb_writer.add_scalar(name, score, step)
 
-        if official:
-            conll_results = conll.evaluate_conll(conll_path, doc_to_prediction, stored_info['subtoken_maps'])
-            official_f1 = sum(results["f"] for results in conll_results.values()) / len(conll_results)
-            logger.info('Official avg F1: %.4f' % official_f1)
+        # if official:
+        #     conll_results = conll.evaluate_conll(conll_path, doc_to_prediction, stored_info['subtoken_maps'])
+        #     official_f1 = sum(results["f"] for results in conll_results.values()) / len(conll_results)
+        #     logger.info('Official avg F1: %.4f' % official_f1)
 
-        return f * 100, metrics
+        # return f * 100, metrics
     
     def evaluate_from_csv(self, model, tensor_examples, stored_info, step, official=False, conll_path=None, tb_writer=None, gold_boundaries=True):
         logger.info('Step %d: evaluating on %d samples...' % (step, len(tensor_examples)))
@@ -252,9 +254,8 @@ class Runner:
 
         metric_file = open(f"evaluation/k-metrics-{metric_file_suffix}.csv", "w")
         metric_file.write("k,eval_avg_p,eval_avg_r,eval_avg_f,conll_md_p,conll_md_r,conll_md_f,conll_muc_p,conll_muc_r,conll_muc_f,conll_bcub_p,conll_bcub_r,conll_bcub_f,conll_ceafe_p,conll_ceafe_r,conll_ceafe_f,conll_avg_f\n")
-        nb_ranks = self.config["max_top_antecedents"]
         model.eval()
-        for k in range(1, nb_ranks + 1):
+        for k in range(1, 2):#MAX_NB_ANTECEDENTS + 1):
             for i, (doc_key, tensor_example) in enumerate(tensor_examples):
                 gold_clusters = stored_info['gold'][doc_key]
 

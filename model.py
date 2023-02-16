@@ -115,7 +115,7 @@ class CorefModel(nn.Module):
         if gold_mention_cluster_map is not None:
             assert gold_starts is not None
             assert gold_ends is not None
-            do_loss = True
+            # do_loss = True
 
         # Get token emb
         mention_doc, _ = self.bert(input_ids, attention_mask=input_mask)  # [num seg, num max tokens, emb size]
@@ -183,8 +183,9 @@ class CorefModel(nn.Module):
         # Extract top spans
         candidate_idx_sorted_by_score = torch.argsort(candidate_mention_scores, descending=True).tolist()
         candidate_starts_cpu, candidate_ends_cpu = candidate_starts.tolist(), candidate_ends.tolist()
-        num_top_spans = int(min(conf['max_num_extracted_spans'], conf['top_span_ratio'] * num_words))
-        num_top_spans = min(num_top_spans, num_candidates) # to have only correct spans (mandatory if gold boundaries provided), otherwise, the last top spans are inconsistent
+        # num_top_spans = int(min(conf['max_num_extracted_spans'], conf['top_span_ratio'] * num_words))
+        # num_top_spans = min(num_top_spans, num_candidates) # to have only correct spans (mandatory if gold boundaries provided), otherwise, the last top spans are inconsistent
+        num_top_spans = num_candidates # to avoid pruning
         selected_idx_cpu = self._extract_top_spans(candidate_idx_sorted_by_score, candidate_starts_cpu, candidate_ends_cpu, num_top_spans)
         assert len(selected_idx_cpu) == num_top_spans
         selected_idx = torch.tensor(selected_idx_cpu, device=device)
@@ -194,7 +195,9 @@ class CorefModel(nn.Module):
         top_span_mention_scores = candidate_mention_scores[selected_idx]
 
         # Coarse pruning on each mention's antecedents
-        max_top_antecedents = min(num_top_spans, conf['max_top_antecedents'])
+        # max_top_antecedents = min(num_top_spans, conf['max_top_antecedents'])
+        MAX_TOP_ANTECEDENTS = 210 # set up according to Simon's memory limits
+        max_top_antecedents = min(num_top_spans, MAX_TOP_ANTECEDENTS)
         top_span_range = torch.arange(0, num_top_spans, device=device)
         antecedent_offsets = torch.unsqueeze(top_span_range, 1) - torch.unsqueeze(top_span_range, 0)
         antecedent_mask = (antecedent_offsets >= 1)
