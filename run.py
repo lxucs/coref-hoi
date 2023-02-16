@@ -22,7 +22,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s
                     level=logging.INFO)
 logger = logging.getLogger()
 
-MAX_NB_ANTECEDENTS = 262 # the max number of antecedents for the test documents
+MAX_NB_ANTECEDENTS = 210 # the max number of antecedents for the test documents is 262 but in model this value was reduced to 210 because of lack of memory
 
 
 class Runner:
@@ -255,7 +255,7 @@ class Runner:
         metric_file = open(f"evaluation/k-metrics-{metric_file_suffix}.csv", "w")
         metric_file.write("k,eval_avg_p,eval_avg_r,eval_avg_f,conll_md_p,conll_md_r,conll_md_f,conll_muc_p,conll_muc_r,conll_muc_f,conll_bcub_p,conll_bcub_r,conll_bcub_f,conll_ceafe_p,conll_ceafe_r,conll_ceafe_f,conll_avg_f\n")
         model.eval()
-        for k in range(1, 2):#MAX_NB_ANTECEDENTS + 1):
+        for k in range(1, MAX_NB_ANTECEDENTS + 1):
             for i, (doc_key, tensor_example) in enumerate(tensor_examples):
                 gold_clusters = stored_info['gold'][doc_key]
 
@@ -309,7 +309,7 @@ class Runner:
                 official_f1 = sum(results["f"] for results in conll_results.values()) / len(conll_results)
                 #logger.info('Official avg F1: %.4f' % official_f1)
             metric_file.write(f"{k},{p*100:.2f},{r*100:.2f},{f*100:.2f},{conll_results['muc']['md_p']},{conll_results['muc']['md_r']},{conll_results['muc']['md_f']},{conll_results['muc']['p']},{conll_results['muc']['r']},{conll_results['muc']['f']},{conll_results['bcub']['p']},{conll_results['bcub']['r']},{conll_results['bcub']['f']},{conll_results['ceafe']['p']},{conll_results['ceafe']['r']},{conll_results['ceafe']['f']},{official_f1:.4f}\n")
-            logger.info(f"evaluation from csv file - rank {k}/{nb_ranks}")
+            logger.info(f"evaluation from csv file - rank {k}/{MAX_NB_ANTECEDENTS}")
 
         metric_file.close()
 
