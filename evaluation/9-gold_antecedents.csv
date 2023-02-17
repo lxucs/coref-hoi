@@ -1,10 +1,15 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bc/cctv/00/cctv_0005_9,0,7,8,-1,-1,-1,1
+bc/cctv/00/cctv_0005_9,1,45,47,-1,-1,-1,2
+bc/cctv/00/cctv_0005_9,2,53,54,-1,-1,-1,3
 bc/cctv/00/cctv_0005_9,3,65,65,2,53,54,3
 bc/cctv/00/cctv_0005_9,4,198,199,3,65,65,3
+bc/cctv/00/cctv_0005_9,5,198,202,-1,-1,-1,4
 bc/cctv/00/cctv_0005_9,6,217,217,1,45,47,2
 bc/cctv/00/cctv_0005_9,7,246,247,4,198,199,3
 bc/cctv/00/cctv_0005_9,8,246,250,5,198,202,4
 bc/cctv/00/cctv_0005_9,9,252,252,0,7,8,1
+bc/cctv/00/cctv_0005_9,10,261,263,-1,-1,-1,5
 bc/cctv/00/cctv_0005_9,11,265,266,6,217,217,2
 bc/cctv/00/cctv_0005_9,12,270,270,10,261,263,5
 bc/cctv/00/cctv_0005_9,13,283,284,11,265,266,2

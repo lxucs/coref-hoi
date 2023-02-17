@@ -1,3 +1,4 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bn/abc/00/abc_0039_0,0,27,30,-1,-1,-1,1
 bn/abc/00/abc_0039_0,1,35,46,0,27,30,1
 bn/abc/00/abc_0039_0,2,54,54,1,35,46,1

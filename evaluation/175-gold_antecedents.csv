@@ -1,8 +1,15 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+mz/sinorama/10/ectb_1049_4,0,1,3,-1,-1,-1,1
+mz/sinorama/10/ectb_1049_4,1,8,11,-1,-1,-1,2
 mz/sinorama/10/ectb_1049_4,2,39,42,1,8,11,2
 mz/sinorama/10/ectb_1049_4,3,53,57,2,39,42,2
+mz/sinorama/10/ectb_1049_4,4,63,63,-1,-1,-1,3
 mz/sinorama/10/ectb_1049_4,5,69,71,0,1,3,1
 mz/sinorama/10/ectb_1049_4,6,71,71,5,69,71,1
+mz/sinorama/10/ectb_1049_4,7,79,80,-1,-1,-1,4
+mz/sinorama/10/ectb_1049_4,8,82,92,-1,-1,-1,6
+mz/sinorama/10/ectb_1049_4,9,85,92,-1,-1,-1,7
+mz/sinorama/10/ectb_1049_4,10,90,92,-1,-1,-1,5
 mz/sinorama/10/ectb_1049_4,11,94,103,9,85,92,7
 mz/sinorama/10/ectb_1049_4,12,118,119,6,71,71,1
 mz/sinorama/10/ectb_1049_4,13,121,126,10,90,92,5
@@ -13,6 +20,9 @@ mz/sinorama/10/ectb_1049_4,17,178,180,15,141,143,5
 mz/sinorama/10/ectb_1049_4,18,182,183,14,129,130,6
 mz/sinorama/10/ectb_1049_4,19,204,205,18,182,183,6
 mz/sinorama/10/ectb_1049_4,20,231,233,17,178,180,5
+mz/sinorama/10/ectb_1049_4,21,256,264,-1,-1,-1,8
+mz/sinorama/10/ectb_1049_4,22,284,286,-1,-1,-1,9
+mz/sinorama/10/ectb_1049_4,23,294,306,-1,-1,-1,10
 mz/sinorama/10/ectb_1049_4,24,311,312,22,284,286,9
 mz/sinorama/10/ectb_1049_4,25,330,330,23,294,306,10
 mz/sinorama/10/ectb_1049_4,26,340,341,24,311,312,9
@@ -22,6 +32,7 @@ mz/sinorama/10/ectb_1049_4,29,366,366,7,79,80,4
 mz/sinorama/10/ectb_1049_4,30,375,377,20,231,233,5
 mz/sinorama/10/ectb_1049_4,31,393,393,29,366,366,4
 mz/sinorama/10/ectb_1049_4,32,405,405,31,393,393,4
+mz/sinorama/10/ectb_1049_4,33,418,422,-1,-1,-1,11
 mz/sinorama/10/ectb_1049_4,34,420,422,30,375,377,5
 mz/sinorama/10/ectb_1049_4,35,429,429,34,420,422,5
 mz/sinorama/10/ectb_1049_4,36,446,448,35,429,429,5
@@ -34,9 +45,11 @@ mz/sinorama/10/ectb_1049_4,42,514,516,41,478,482,5
 mz/sinorama/10/ectb_1049_4,43,521,521,42,514,516,5
 mz/sinorama/10/ectb_1049_4,44,534,535,16,148,149,1
 mz/sinorama/10/ectb_1049_4,45,537,537,4,63,63,3
+mz/sinorama/10/ectb_1049_4,46,545,557,-1,-1,-1,12
 mz/sinorama/10/ectb_1049_4,47,559,559,46,545,557,12
 mz/sinorama/10/ectb_1049_4,48,567,567,47,559,559,12
 mz/sinorama/10/ectb_1049_4,49,574,575,44,534,535,1
+mz/sinorama/10/ectb_1049_4,50,591,598,-1,-1,-1,13
 mz/sinorama/10/ectb_1049_4,51,611,612,49,574,575,1
 mz/sinorama/10/ectb_1049_4,52,615,616,50,591,598,13
 mz/sinorama/10/ectb_1049_4,53,643,643,45,537,537,3

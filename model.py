@@ -196,7 +196,7 @@ class CorefModel(nn.Module):
 
         # Coarse pruning on each mention's antecedents
         # max_top_antecedents = min(num_top_spans, conf['max_top_antecedents'])
-        MAX_TOP_ANTECEDENTS = 210 # set to max value without memory limits, max number of mentions per document is 262
+        MAX_TOP_ANTECEDENTS = 210 # set to max value without memory limits, max number of mentions per document is 263
         max_top_antecedents = min(num_top_spans, MAX_TOP_ANTECEDENTS)
         top_span_range = torch.arange(0, num_top_spans, device=device)
         antecedent_offsets = torch.unsqueeze(top_span_range, 1) - torch.unsqueeze(top_span_range, 0)

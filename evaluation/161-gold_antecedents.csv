@@ -1,10 +1,15 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+mz/sinorama/10/ectb_1029_1,0,72,72,-1,-1,-1,1
+mz/sinorama/10/ectb_1029_1,1,77,91,-1,-1,-1,2
+mz/sinorama/10/ectb_1029_1,2,94,110,-1,-1,-1,3
 mz/sinorama/10/ectb_1029_1,3,133,135,2,94,110,3
 mz/sinorama/10/ectb_1029_1,4,145,149,1,77,91,2
+mz/sinorama/10/ectb_1029_1,5,145,163,-1,-1,-1,4
 mz/sinorama/10/ectb_1029_1,6,167,167,5,145,163,4
 mz/sinorama/10/ectb_1029_1,7,171,171,6,167,167,4
 mz/sinorama/10/ectb_1029_1,8,207,210,3,133,135,3
 mz/sinorama/10/ectb_1029_1,9,227,227,0,72,72,1
+mz/sinorama/10/ectb_1029_1,10,246,252,-1,-1,-1,5
 mz/sinorama/10/ectb_1029_1,11,257,259,10,246,252,5
 mz/sinorama/10/ectb_1029_1,12,266,266,11,257,259,5
 mz/sinorama/10/ectb_1029_1,13,284,284,9,227,227,1

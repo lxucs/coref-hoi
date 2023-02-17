@@ -1,6 +1,10 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+mz/sinorama/10/ectb_1059_4,0,13,15,-1,-1,-1,1
+mz/sinorama/10/ectb_1059_4,1,54,56,-1,-1,-1,2
+mz/sinorama/10/ectb_1059_4,2,79,80,-1,-1,-1,3
 mz/sinorama/10/ectb_1059_4,3,82,82,2,79,80,3
 mz/sinorama/10/ectb_1059_4,4,91,93,0,13,15,1
+mz/sinorama/10/ectb_1059_4,5,111,129,-1,-1,-1,4
 mz/sinorama/10/ectb_1059_4,6,133,135,4,91,93,1
 mz/sinorama/10/ectb_1059_4,7,141,141,5,111,129,4
 mz/sinorama/10/ectb_1059_4,8,152,152,7,141,141,4
@@ -8,6 +12,7 @@ mz/sinorama/10/ectb_1059_4,9,165,165,1,54,56,2
 mz/sinorama/10/ectb_1059_4,10,175,175,8,152,152,4
 mz/sinorama/10/ectb_1059_4,11,204,204,10,175,175,4
 mz/sinorama/10/ectb_1059_4,12,214,214,11,204,204,4
+mz/sinorama/10/ectb_1059_4,13,216,231,-1,-1,-1,5
 mz/sinorama/10/ectb_1059_4,14,233,233,13,216,231,5
 mz/sinorama/10/ectb_1059_4,15,236,238,6,133,135,1
 mz/sinorama/10/ectb_1059_4,16,246,246,15,236,238,1
@@ -16,14 +21,18 @@ mz/sinorama/10/ectb_1059_4,18,253,253,16,246,246,1
 mz/sinorama/10/ectb_1059_4,19,256,256,18,253,253,1
 mz/sinorama/10/ectb_1059_4,20,289,291,19,256,256,1
 mz/sinorama/10/ectb_1059_4,21,305,308,20,289,291,1
+mz/sinorama/10/ectb_1059_4,22,362,368,-1,-1,-1,6
 mz/sinorama/10/ectb_1059_4,23,367,368,21,305,308,1
 mz/sinorama/10/ectb_1059_4,24,381,381,22,362,368,6
+mz/sinorama/10/ectb_1059_4,25,384,386,-1,-1,-1,7
 mz/sinorama/10/ectb_1059_4,26,394,394,25,384,386,7
 mz/sinorama/10/ectb_1059_4,27,449,451,23,367,368,1
 mz/sinorama/10/ectb_1059_4,28,456,456,27,449,451,1
 mz/sinorama/10/ectb_1059_4,29,469,471,28,456,456,1
+mz/sinorama/10/ectb_1059_4,30,482,493,-1,-1,-1,8
 mz/sinorama/10/ectb_1059_4,31,484,484,30,482,493,8
 mz/sinorama/10/ectb_1059_4,32,497,497,29,469,471,1
+mz/sinorama/10/ectb_1059_4,33,497,498,-1,-1,-1,9
 mz/sinorama/10/ectb_1059_4,34,502,502,33,497,498,9
 mz/sinorama/10/ectb_1059_4,35,505,506,32,497,497,1
 mz/sinorama/10/ectb_1059_4,36,511,511,35,505,506,1

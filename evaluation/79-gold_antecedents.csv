@@ -1,4 +1,6 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bn/cnn/01/cnn_0179_0,0,1,2,-1,-1,-1,1
+bn/cnn/01/cnn_0179_0,1,14,16,-1,-1,-1,2
 bn/cnn/01/cnn_0179_0,2,18,19,1,14,16,2
 bn/cnn/01/cnn_0179_0,3,34,34,0,1,2,1
 bn/cnn/01/cnn_0179_0,4,41,41,3,34,34,1

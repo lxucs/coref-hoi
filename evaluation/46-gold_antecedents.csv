@@ -1,3 +1,5 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bc/msnbc/00/msnbc_0007_12,0,4,5,-1,-1,-1,1
 bc/msnbc/00/msnbc_0007_12,1,7,7,0,4,5,1
+bc/msnbc/00/msnbc_0007_12,2,20,22,-1,-1,-1,2
 bc/msnbc/00/msnbc_0007_12,3,41,43,2,20,22,2

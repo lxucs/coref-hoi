@@ -1,5 +1,8 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bc/cctv/00/cctv_0005_0,0,18,18,-1,-1,-1,1
 bc/cctv/00/cctv_0005_0,1,21,25,0,18,18,1
+bc/cctv/00/cctv_0005_0,2,27,29,-1,-1,-1,2
 bc/cctv/00/cctv_0005_0,3,44,46,2,27,29,2
 bc/cctv/00/cctv_0005_0,4,61,63,3,44,46,2
+bc/cctv/00/cctv_0005_0,5,86,86,-1,-1,-1,3
 bc/cctv/00/cctv_0005_0,6,87,87,5,86,86,3

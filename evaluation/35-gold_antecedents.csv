@@ -1,10 +1,14 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bc/msnbc/00/msnbc_0007_1,0,15,15,-1,-1,-1,1
 bc/msnbc/00/msnbc_0007_1,1,25,25,0,15,15,1
+bc/msnbc/00/msnbc_0007_1,2,29,32,-1,-1,-1,2
+bc/msnbc/00/msnbc_0007_1,3,29,36,-1,-1,-1,3
 bc/msnbc/00/msnbc_0007_1,4,55,56,3,29,36,3
 bc/msnbc/00/msnbc_0007_1,5,61,61,1,25,25,1
 bc/msnbc/00/msnbc_0007_1,6,108,109,2,29,32,2
 bc/msnbc/00/msnbc_0007_1,7,136,137,6,108,109,2
 bc/msnbc/00/msnbc_0007_1,8,149,149,5,61,61,1
+bc/msnbc/00/msnbc_0007_1,9,155,158,-1,-1,-1,4
 bc/msnbc/00/msnbc_0007_1,10,165,165,9,155,158,4
 bc/msnbc/00/msnbc_0007_1,11,171,173,8,149,149,1
 bc/msnbc/00/msnbc_0007_1,12,179,179,10,165,165,4

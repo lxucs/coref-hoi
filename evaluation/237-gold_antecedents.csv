@@ -1,2 +1,3 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+nw/wsj/23/wsj_2380_0,0,909,913,-1,-1,-1,1
 nw/wsj/23/wsj_2380_0,1,1003,1007,0,909,913,1

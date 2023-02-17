@@ -1,4 +1,6 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+nw/wsj/23/wsj_2349_0,0,111,119,-1,-1,-1,1
 nw/wsj/23/wsj_2349_0,1,141,145,0,111,119,1
 nw/wsj/23/wsj_2349_0,2,164,168,1,141,145,1
+nw/wsj/23/wsj_2349_0,3,226,233,-1,-1,-1,2
 nw/wsj/23/wsj_2349_0,4,258,262,3,226,233,2

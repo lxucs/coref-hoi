@@ -1,4 +1,7 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+nw/xinhua/01/chtb_0199_0,0,11,11,-1,-1,-1,1
+nw/xinhua/01/chtb_0199_0,1,13,16,-1,-1,-1,2
 nw/xinhua/01/chtb_0199_0,2,19,19,0,11,11,1
+nw/xinhua/01/chtb_0199_0,3,36,37,-1,-1,-1,3
 nw/xinhua/01/chtb_0199_0,4,39,42,1,13,16,2
 nw/xinhua/01/chtb_0199_0,5,48,48,3,36,37,3

@@ -1,4 +1,6 @@
 doc_key,anaphor_idx,anaphor_start,anaphor_end,antecedent_idx,antecedent_start,antecedent_end,cluster_id
+bn/voa/00/voa_0089_0,0,1,4,-1,-1,-1,1
+bn/voa/00/voa_0089_0,1,6,14,-1,-1,-1,2
 bn/voa/00/voa_0089_0,2,19,19,0,1,4,1
 bn/voa/00/voa_0089_0,3,42,43,2,19,19,1
 bn/voa/00/voa_0089_0,4,53,54,1,6,14,2
