@@ -29,15 +29,15 @@ For SpanBERT, download the pretrained weights from this [repository](https://git
 
 ## Evaluation
 Provided trained models:
-* SpanBERT + no HOI: [download](https://cs.emory.edu/~lxu85/train_spanbert_large_ml0_d1.tar)
-* SpanBERT + Attended Antecedent: [download](https://cs.emory.edu/~lxu85/train_spanbert_large_ml0_d2.tar)
-* SpanBERT + Span Clustering: [download](https://cs.emory.edu/~lxu85/train_spanbert_large_ml0_sc.tar)
-* SpanBERT + Cluster Merging: [download](https://cs.emory.edu/~lxu85/train_spanbert_large_ml0_cm_fn1000_max_dloss.tar)
+* SpanBERT + no HOI: [FILE](https://drive.google.com/file/d/1fjHrRT98XzvNSrzhJnydQBgKW0QodvGK)
+* SpanBERT + Attended Antecedent: [FILE](https://drive.google.com/file/d/1qTrTYM2aEocvrO-cq2kcL64NFZmRUn6Z)
+* SpanBERT + Span Clustering: [FILE](https://drive.google.com/file/d/1NAXbCbJBPtPYBj3lttPnlioBoLdxjKoc)
+* SpanBERT + Cluster Merging: [FILE](https://drive.google.com/file/d/1ZdT9QjIwJxCGZjj7utFQdtjvFlwwdnP2)
 * SpanBERT + Entity Equalization: see [repository](https://github.com/lxucs/coref-ee)
 
 The name of each directory corresponds with a **configuration** in [experiments.conf](experiments.conf). Each directory has two trained models inside.
 
-If you want to use the official evaluator, download and unzip [conll 2012 scorer](https://cs.emory.edu/~lxu85/conll-2012.zip) under this directory.
+If you want to use the official evaluator, download and unzip [conll 2012 scorer](https://drive.google.com/file/d/1UeDIAFFNpJXfSH-PvOvacA60mC-XRDk5) under this directory.
 
 Evaluate a model on the dev/test set:
 * Download the corresponding model directory and unzip it under `data_dir`
